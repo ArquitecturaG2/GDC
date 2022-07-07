@@ -1,11 +1,151 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Detalle Requerimiento</title>
+    </h:head>
+    <h:body>
+
+        <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <h:form prependId="false" id="form">
+
+            <p:growl id="messages" showDetail="true" />
+            <p:messages />
+
+            <p:dataTable 
+                id="detalleRequerimientos" 
+                var="detalle" 
+                value="#{detalleRequerimientoBean.detalleRequerimientos}" 
+                editable="true" 
+                rowKey="#{DetalleRequerimiento.iddetalleRequerimiento}"
+                selectionMode="single"
+                lazy = "true">
+
+                <f:facet name="header">  
+                    Detalla de requerimientos 
+                </f:facet>
+                <p:column headerText="Descripción">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.descripcion}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.descripcion}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Cantidad">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.cantidad}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.cantidad}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="PrecioUnitario">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.precioUnitario}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.precioUnitario}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="fechaRequerida">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.fechaRequerida}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.fechaRequerida}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="lugarRequerido">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.lugarRequerido}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.lugarRequerido}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Producto">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.idproducto}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.idproducto}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Opciones" style="width:50px">
+                    <p:rowEditor />
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Regresar" action="index" />
+                    <p:spacer height="5px;"/>
+                    <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.agregarDetalleRequerimiento}" oncomplete="PF('detalleDialogo').show();" update="detalleRequerimientos">
+                        <p:ajax event="dialogReturn" update="detalleRequerimientos"/>
+                    </p:commandButton>
+                </f:facet>
+                <p:ajax event="rowEdit" listener="#{detalleRequerimientoBean.editListener}">
+                </p:ajax>
+            </p:dataTable>
+
+            <p:contextMenu for="detalleRequerimientos">
+                <p:menuitem value="Eliminar" update="detalleRequerimientos" icon="ui-icon-close" actionListener="#{detalleRequerimientoBean.eliminarDetalleRequerimiento}" ajax="false"/>
+            </p:contextMenu>
+            
+            <h:form id="dialogoForm" prependId="false">
+            <p:dialog header="Agregar detalle" widgetVar="detalleDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Detalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Descripcion" />
+                        <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.descripcion}" />
+
+                        <h:outputText value="Cantidad" />
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.cantidad}"  minValue="1"
+                                       decimalPlaces="0" />
+                        <h:outputText value="Precio Unitario" />
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioUnitario}"  minValue="0"
+                                       decimalPlaces="2" />
+                        <h:outputText value="Precio Total" />
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioTotal}"  minValue="0"
+                                       decimalPlaces="2" />
+                        <h:outputText value="Fecha Requerida" />
+                        <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" />
+                        <p:datePicker id="minmax" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" mindate="#{calendarView.minDate}"
+                              maxdate="#{calendarView.maxDate}" readonlyInput="true"/>
+                        <h:outputText value="Lugar Requerido" />
+                        <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.lugarRequerido}" />
+                        <f:facet name="footer">
+                            <h:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.agregarDetalleRequerimiento}" />
+                        </f:facet>
+                    </p:panelGrid>
+                </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        </h:form>
+    </h:body>
+
 </html>
