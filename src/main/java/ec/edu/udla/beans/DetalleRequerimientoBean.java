@@ -17,7 +17,7 @@ public class DetalleRequerimientoBean {
 
     private DetalleRequerimiento detalleRequerimientoSeleccionada;
 
-    List<DetalleRequerimiento> detalleRequerimiento;
+    List<DetalleRequerimiento> detalleRequerimientos;
 
     public DetalleRequerimientoBean() {
     }
@@ -25,7 +25,7 @@ public class DetalleRequerimientoBean {
     @PostConstruct
     public void inicializar() {
         //Iniciamos las variables
-        detalleRequerimiento = detalleRequerimientoService.listarDetalleRequerimiento();
+        detalleRequerimientos = detalleRequerimientoService.listarDetalleRequerimiento();
         detalleRequerimientoSeleccionada = new DetalleRequerimiento();
     }
 
@@ -35,11 +35,11 @@ public class DetalleRequerimientoBean {
     }
 
     public List<DetalleRequerimiento> getDetalleRequerimiento() {
-        return detalleRequerimiento;
+        return detalleRequerimientos;
     }
 
     public void setDetalleRequerimiento(List<DetalleRequerimiento> detalleRequerimiento) {
-        this.detalleRequerimiento = detalleRequerimiento;
+        this.detalleRequerimientos = detalleRequerimiento;
     }
 
     public DetalleRequerimiento getDetalleRequerimientoSeleccionada() {

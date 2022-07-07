@@ -4,6 +4,7 @@
  */
 package ec.edu.udla.dominio;
 
+import ec.edu.udla.servicio.DetalleRequerimientoService;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -20,6 +21,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.primefaces.event.RowEditEvent;
 
 /**
  *
@@ -131,7 +133,7 @@ public class DetalleRequerimiento implements Serializable {
     public float getPrecioTotal() {
         return precioTotal;
     }
-
+    
     public void setPrecioTotal(float precioTotal) {
         this.precioTotal = precioTotal;
     }
