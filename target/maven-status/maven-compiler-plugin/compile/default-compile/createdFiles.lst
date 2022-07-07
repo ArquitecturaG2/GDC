@@ -13,6 +13,7 @@ ec\edu\udla\servicio\EstrategiaContratoServiceImpl.class
 ec\edu\udla\servicio\DetalleRequerimientoServiceImpl.class
 ec\edu\udla\servicio\SolicitudCompraCompletaServiceImpl.class
 ec\edu\udla\dominio\Producto.class
+ec\edu\udla\dominio\TipoContrato.class
 ec\edu\udla\eis\ProveedorFacadeLocal.class
 ec\edu\udla\servicio\EstrategiaContratoService.class
 ec\edu\udla\eis\SolicitudCompraCompletaFacade.class
