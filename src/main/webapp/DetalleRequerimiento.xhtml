@@ -133,9 +133,8 @@
                         <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioTotal}"  minValue="0"
                                        decimalPlaces="2" />
                         <h:outputText value="Fecha Requerida" />
-                        <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" />
-                        <p:datePicker id="minmax" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" mindate="#{calendarView.minDate}"
-                              maxdate="#{calendarView.maxDate}" readonlyInput="true"/>
+                        <p:datePicker id="minmax" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" mindate="2022-07-07"
+                              maxdate="#{calendarView.maxDate}" readonlyInput="false"/>
                         <h:outputText value="Lugar Requerido" />
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.lugarRequerido}" />
                         <f:facet name="footer">
