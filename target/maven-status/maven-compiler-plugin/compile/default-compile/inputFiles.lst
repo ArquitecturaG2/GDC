@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\ProductoFacade.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\ProveedorFacade.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\dominio\TipoContrato.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\beans\DetalleRequerimientoBean.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\dominio\SolicitudCompraCompleta.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\beans\SolicitudCompraCompletaBean.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\servicio\SolicitudCompraCompletaServiceImpl.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\EstrategiaContratoFacade.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\DetalleRequerimientoFacade.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\dominio\Producto.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\ProveedorFacadeLocal.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\servicio\EstrategiaContratoServiceImpl.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\dominio\DetalleRequerimiento.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\servicio\EstrategiaContratoService.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\SolicitudCompraCompletaFacadeLocal.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\servicio\DetalleRequerimientoService.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\servicio\SolicitudCompraCompletaService.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\AbstractFacade.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\servicio\DetalleRequerimientoServiceImpl.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\dominio\EstrategiaContrato.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\SolicitudCompraCompletaFacade.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\beans\EstrategiaContratoBean.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\dominio\Proveedor.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\ProductoFacadeLocal.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\EstrategiaContratoFacadeLocal.java
+C:\Users\diana\GDC\src\main\java\ec\edu\udla\eis\DetalleRequerimientoFacadeLocal.java
+=======
 C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udla\eis\ProveedorFacade.java
 C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udla\eis\SolicitudCompraCompletaFacade.java
 C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udla\eis\ProductoFacadeLocal.java
@@ -23,3 +51,4 @@ C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udl
 C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udla\beans\EstrategiaContratoBean.java
 C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udla\eis\DetalleRequerimientoFacade.java
 C:\Users\Emgot\Documents\NetBeansProjects\OKAProyet\GDC\src\main\java\ec\edu\udla\servicio\DetalleRequerimientoServiceImpl.java
+>>>>>>> 73b84476609d89fb0adf0ec0d4c869aaa1b3d893

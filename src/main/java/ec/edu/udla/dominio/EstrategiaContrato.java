@@ -93,7 +93,7 @@ public class EstrategiaContrato implements Serializable {
         this.duracion = duracion;
         this.lugarEntrega = lugarEntrega;
         this.cantidadContrato = cantidadContrato;
-        this.tipoContrato = tipoContrato;
+        setTipoContrato(tipoContrato);
     }
 
     public Integer getIdestrategiaContrato() {
@@ -157,7 +157,22 @@ public class EstrategiaContrato implements Serializable {
     }
 
     public void setTipoContrato(String tipoContrato) {
-        this.tipoContrato = tipoContrato;
+        String con = TipoContrato.AcuerdoGeneral.toString();
+        String con1 = TipoContrato.OrdenDeCompra.toString();
+        String tp = null;
+        if(tipoContrato.equals(con))
+        {
+            tp = "Orden de Compra";
+            this.tipoContrato = tp;
+        }else if(tipoContrato.equals(con1))
+        {
+            tp = "Acuerdo General";
+            this.tipoContrato = tp;
+        }else 
+        {
+            tp = "Orden de Servicio";
+            this.tipoContrato = tp;
+        }
     }
 
     public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {

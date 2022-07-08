@@ -4,12 +4,174 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <div>TODO write content</div>
+        <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <h:form prependId="false" id="form">
+
+            <p:growl id="messages" showDetail="true" />
+            <p:messages />
+
+            <p:dataTable 
+                id="estrategiaContrato" 
+                var="estrategia" 
+                value="#{estrategiaContratoBean.estrategiaContrato}" 
+                editable="true" 
+                rowKey="#{estrategiaContrato.idestrategia_contrato}"
+                selection="#{estrategiaContratoBean.estrategiaContratoSeleccionada}" 
+                selectionMode="single">
+
+                <f:facet name="header">  
+                    SECCION A. ESTRATEGIA DE CONTRATO
+                </f:facet>
+
+                <p:column headerText="Tipo de Contrato">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.tipoContrato}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.tipoContrato}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Fecha requerida">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.fechaRequerida}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.fechaRequerida}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Duración">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.duracion}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.duracion}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Lugar de Entrega">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.lugarEntrega}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.lugarEntrega}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Extensión">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.extension}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.extension}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Cantidad de Contratos">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.cantidadContrato}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.cantidadContrato}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Justificación">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategiaContrato.justificacion}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategiaContrato.justificacion}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <f:facet name="footer">
+                    <p:commandButton value="Regresar" action="index" />
+                    <p:spacer height="5px;"/>
+                    <p:commandButton value="Agregar" actionListener="#{estrategiaContratoBean.reiniciarEstrategiaContratoSeleccionada}" oncomplete="PF('estrategiaContratoDialogo').show();"
+                                     update="estrategiaContrato">
+                        <p:ajax event="dialogReturn" update="estrategiaContrato"/>
+                    </p:commandButton>
+                </f:facet>
+
+                <p:column headerText="Opciones" style="width:50px">
+                    <p:rowEditor />
+                </p:column>
+
+                <p:ajax event="rowEdit" listener="#{estrategiaContratoBean.editListener}">
+                </p:ajax>
+            </p:dataTable>
+
+
+
+            <p:contextMenu for="estrategiaContrato">
+                <p:menuitem value="Eliminar" update="estrategiaContrato" icon="ui-icon-close" actionListener="#{estrategiaContratoBean.eliminarEstrategiaContrato}" ajax="false"/>
+            </p:contextMenu>
+        </h:form>
+
+        <h:form id="dialogoForm" prependId="false">
+            <p:dialog header="Agregar Estrategia de Contrato" widgetVar="estrategiaContratoDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="estrategiaContratoDetalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Tipo de Contrato" />
+                        <p:selectOneMenu id="option" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.tipoContrato}">
+                            <f:selectItem itemLabel="Orden de Compra" itemValue="OrdenDeCompra"/>
+                            <f:selectItem itemLabel="Orden de Servicio" itemValue="OrdenDeServicio"/>
+                            <f:selectItem itemLabel="Acuerdo General" itemValue="AcuerdoGeneral"/>
+                        </p:selectOneMenu>
+                        
+                        <h:outputText value="Fecha Requerida" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" />
+
+                        <h:outputText value="Duracion" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.duracion}" />
+
+                        <h:outputText value="Lugar de Entrega" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.lugarEntrega}" />
+
+                        <h:outputText value="Extension" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.extension}" />
+
+                        <h:outputText value="Numero de Contratos" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.cantidadContrato}" />
+                         
+                        <h:outputText value="Jutificacion" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
+                        
+                        <f:facet name="footer">
+                            <h:commandButton value="Agregar" actionListener="#{estrategiaContratoBean.agregarEstrategiaContrato}" />
+                        </f:facet>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
     </body>
 </html>
