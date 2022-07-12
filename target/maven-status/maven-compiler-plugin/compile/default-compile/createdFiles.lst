@@ -6,6 +6,7 @@ ec\edu\udla\beans\SolicitudCompraCompletaBean.class
 ec\edu\udla\beans\EstrategiaContratoBean.class
 ec\edu\udla\dominio\DetalleRequerimiento.class
 ec\edu\udla\servicio\DetalleRequerimientoService.class
+mx\com\gm\sga\beans\ConfigurationBean.class
 ec\edu\udla\eis\AbstractFacade.class
 ec\edu\udla\beans\DetalleRequerimientoBean.class
 ec\edu\udla\eis\SolicitudCompraCompletaFacadeLocal.class

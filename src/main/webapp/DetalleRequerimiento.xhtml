@@ -31,9 +31,9 @@
                 var="detalle" 
                 value="#{detalleRequerimientoBean.detalleRequerimientos}" 
                 editable="true" 
-                rowKey="#{DetalleRequerimiento.iddetalleRequerimiento}"
-                selectionMode="single"
-                lazy = "true">
+                rowKey="#{detalle.iddetalleRequerimiento}"
+                selection="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada}" 
+                selectionMode="single">
 
                 <f:facet name="header">  
                     Detalla de requerimientos 
@@ -104,7 +104,7 @@
                 <f:facet name="footer">
                     <p:commandButton value="Regresar" action="index" />
                     <p:spacer height="5px;"/>
-                    <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.agregarDetalleRequerimiento}" oncomplete="PF('detalleDialogo').show();" update="detalleRequerimientos">
+                    <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalleRequerimientos">
                         <p:ajax event="dialogReturn" update="detalleRequerimientos"/>
                     </p:commandButton>
                 </f:facet>

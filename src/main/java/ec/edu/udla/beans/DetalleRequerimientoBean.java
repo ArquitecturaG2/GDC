@@ -34,12 +34,12 @@ public class DetalleRequerimientoBean {
         detalleRequerimientoService.modificarDetalleRequerimiento(detalleRequerimientoEditEvent);
     }
 
-    public List<DetalleRequerimiento> getDetalleRequerimiento() {
+    public List<DetalleRequerimiento> getDetalleRequerimientos() {
         return detalleRequerimientos;
     }
 
-    public void setDetalleRequerimiento(List<DetalleRequerimiento> detalleRequerimiento) {
-        this.detalleRequerimientos = detalleRequerimiento;
+    public void setDetalleRequerimientos(List<DetalleRequerimiento> detalleRequerimientos) {
+        this.detalleRequerimientos = detalleRequerimientos;
     }
 
     public DetalleRequerimiento getDetalleRequerimientoSeleccionada() {
