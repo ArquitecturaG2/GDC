@@ -27,7 +27,7 @@
             <p:messages />
 
             <p:dataTable 
-                id="detalleRequerimientos" 
+                id="detalles" 
                 var="detalle" 
                 value="#{detalleRequerimientoBean.detalleRequerimientos}" 
                 editable="true" 
@@ -91,30 +91,32 @@
                 <p:column headerText="Producto">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.idproducto}" />
+                            <h:outputText value="#{detalle.idproducto.idproducto}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{detalle.idproducto}" />
+                            <p:inputText value="#{detalle.idproducto.idproducto}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Regresar" action="./" />
+                    <p:spacer height="5px;"/>
+                    <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalles">
+                        <p:ajax event="dialogReturn" update="detalles"/>
+                    </p:commandButton>
+                </f:facet>
+                
                 <p:column headerText="Opciones" style="width:50px">
                     <p:rowEditor />
                 </p:column>
-                <f:facet name="footer">
-                    <p:commandButton value="Regresar" action="index" />
-                    <p:spacer height="5px;"/>
-                    <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalleRequerimientos">
-                        <p:ajax event="dialogReturn" update="detalleRequerimientos"/>
-                    </p:commandButton>
-                </f:facet>
                 <p:ajax event="rowEdit" listener="#{detalleRequerimientoBean.editListener}">
                 </p:ajax>
             </p:dataTable>
 
-            <p:contextMenu for="detalleRequerimientos">
-                <p:menuitem value="Eliminar" update="detalleRequerimientos" icon="ui-icon-close" actionListener="#{detalleRequerimientoBean.eliminarDetalleRequerimiento}" ajax="false"/>
-            </p:contextMenu>
+                <p:contextMenu for="detalles">
+                    <p:menuitem value="Eliminar" update="detalleRequerimientos" icon="ui-icon-close" actionListener="#{detalleRequerimientoBean.eliminarDetalleRequerimiento}" ajax="false"/>
+                </p:contextMenu>
+        </h:form>
             
             <h:form id="dialogoForm" prependId="false">
             <p:dialog header="Agregar detalle" widgetVar="detalleDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
@@ -133,8 +135,8 @@
                         <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioTotal}"  minValue="0"
                                        decimalPlaces="2" />
                         <h:outputText value="Fecha Requerida" />
-                        <p:datePicker id="minmax" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" mindate="2022-07-07"
-                              maxdate="#{calendarView.maxDate}" readonlyInput="false"/>
+                        <p:datePicker id="minmax" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" mindate="#{detalleRequerimientoBean.currentDate}"
+                              readonlyInput="false"/>
                         <h:outputText value="Lugar Requerido" />
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.lugarRequerido}" />
                         <f:facet name="footer">
@@ -144,7 +146,6 @@
                 </p:outputPanel>
                 </p:dialog>
             </h:form>
-        </h:form>
     </h:body>
 
 </html>

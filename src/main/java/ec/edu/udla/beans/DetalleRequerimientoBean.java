@@ -5,9 +5,14 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ec.edu.udla.dominio.DetalleRequerimiento;
+import ec.edu.udla.dominio.Producto;
+import ec.edu.udla.dominio.SolicitudCompraCompleta;
 import ec.edu.udla.servicio.DetalleRequerimientoService;
+import java.util.Date;
+import java.util.HashSet;
 import org.primefaces.event.RowEditEvent;
 import javax.enterprise.context.RequestScoped;
+
 
 @Named("detalleRequerimientoBean")
 @RequestScoped
@@ -18,6 +23,8 @@ public class DetalleRequerimientoBean {
     private DetalleRequerimiento detalleRequerimientoSeleccionada;
 
     List<DetalleRequerimiento> detalleRequerimientos;
+    
+    private Date currentDate;
 
     public DetalleRequerimientoBean() {
     }
@@ -27,6 +34,7 @@ public class DetalleRequerimientoBean {
         //Iniciamos las variables
         detalleRequerimientos = detalleRequerimientoService.listarDetalleRequerimiento();
         detalleRequerimientoSeleccionada = new DetalleRequerimiento();
+        currentDate = new Date();
     }
 
     public void editListener(RowEditEvent event) {
@@ -55,6 +63,9 @@ public class DetalleRequerimientoBean {
     }
 
     public void agregarDetalleRequerimiento() {
+        this.detalleRequerimientoSeleccionada.setIdproducto(new Producto(1));
+        this.detalleRequerimientoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
+        
         detalleRequerimientoService.registrarDetalleRequerimiento(this.detalleRequerimientoSeleccionada);
         this.detalleRequerimientoSeleccionada = null;
         //actualizamos la lista
@@ -75,4 +86,14 @@ public class DetalleRequerimientoBean {
     public void setDetalleRequerimientoService(DetalleRequerimientoService detalleRequerimientoService) {
         this.detalleRequerimientoService = detalleRequerimientoService;
     }
+
+    public Date getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
+    }
+    
+    
 }

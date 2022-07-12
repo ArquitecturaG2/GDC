@@ -5,6 +5,7 @@
 package ec.edu.udla.eis;
 
 import ec.edu.udla.dominio.DetalleRequerimiento;
+import ec.edu.udla.dominio.DetalleRequerimientoSave;
 import java.util.List;
 import javax.ejb.Local;
 

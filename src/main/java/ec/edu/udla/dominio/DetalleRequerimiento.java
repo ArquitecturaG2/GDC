@@ -4,12 +4,13 @@
  */
 package ec.edu.udla.dominio;
 
-import ec.edu.udla.servicio.DetalleRequerimientoService;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -43,8 +44,8 @@ public class DetalleRequerimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "iddetalle_requerimiento")
     private Integer iddetalleRequerimiento;
     @Basic(optional = false)
@@ -82,6 +83,8 @@ public class DetalleRequerimiento implements Serializable {
     private SolicitudCompraCompleta idsolicitudCompraCompleta;
 
     public DetalleRequerimiento() {
+        idproducto = new Producto();
+        idsolicitudCompraCompleta = new SolicitudCompraCompleta();
     }
 
     public DetalleRequerimiento(Integer iddetalleRequerimiento) {
