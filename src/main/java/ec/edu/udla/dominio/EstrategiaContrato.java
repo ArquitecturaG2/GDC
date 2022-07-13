@@ -5,6 +5,7 @@
 package ec.edu.udla.dominio;
 
 import java.io.Serializable;
+import static java.lang.Short.parseShort;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -132,8 +133,16 @@ public class EstrategiaContrato implements Serializable {
         return extension;
     }
 
-    public void setExtension(Short extension) {
-        this.extension = extension;
+    public void setExtension(Boolean extension) {
+        Short text;
+        String t;
+        if(extension){
+            t = "Si";
+        }else{
+            t = "No";
+        }
+        text = parseShort(t);
+        this.extension = text;
     }
 
     public int getCantidadContrato() {
@@ -209,3 +218,4 @@ public class EstrategiaContrato implements Serializable {
     }
     
 }
+
