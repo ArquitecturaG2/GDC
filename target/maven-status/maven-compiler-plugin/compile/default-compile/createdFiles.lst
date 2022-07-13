@@ -1,6 +1,5 @@
 ec\edu\udla\eis\ProveedorFacade.class
 ec\edu\udla\eis\EstrategiaContratoFacadeLocal.class
-ec\edu\udla\dominio\DetalleRequerimientoSave.class
 ec\edu\udla\eis\DetalleRequerimientoFacadeLocal.class
 ec\edu\udla\servicio\SolicitudCompraCompletaService.class
 ec\edu\udla\beans\SolicitudCompraCompletaBean.class
@@ -14,9 +13,12 @@ ec\edu\udla\eis\SolicitudCompraCompletaFacadeLocal.class
 ec\edu\udla\servicio\EstrategiaContratoServiceImpl.class
 ec\edu\udla\servicio\DetalleRequerimientoServiceImpl.class
 ec\edu\udla\servicio\SolicitudCompraCompletaServiceImpl.class
+ec\edu\udla\beans\ProductoBean.class
+ec\edu\udla\servicio\ProductoService.class
 ec\edu\udla\dominio\Producto.class
 ec\edu\udla\dominio\TipoContrato.class
 ec\edu\udla\eis\ProveedorFacadeLocal.class
+ec\edu\udla\servicio\ProductoServiceImpl.class
 ec\edu\udla\servicio\EstrategiaContratoService.class
 ec\edu\udla\eis\SolicitudCompraCompletaFacade.class
 ec\edu\udla\dominio\SolicitudCompraCompleta.class
