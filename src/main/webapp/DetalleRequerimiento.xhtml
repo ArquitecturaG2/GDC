@@ -104,7 +104,7 @@
                               readonlyInput="true"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:datePicker id="editfecha" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" 
+                            <p:datePicker id="editfecha" value="#{detalle.fechaRequerida}" 
                                           showIcon ="true"
                                           mindate="#{detalleRequerimientoBean.currentDate}"
                               readonlyInput="false"/>
@@ -122,8 +122,8 @@
                     </p:cellEditor>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton value="Regresar" action="./" />
-                    <p:spacer height="5px;"/>
+                    <h:commandButton value="Volver" action="index" />
+                    <p:spacer height="20px;" width="20px;"/>
                     <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalles">
                         <p:ajax event="dialogReturn" update="detalles"/>
                     </p:commandButton>
@@ -141,35 +141,11 @@
                 </p:contextMenu>
         </h:form>
             
-            <h:form id="dialogoForm" prependId="false">
+        <h:form id="dialogoForm" prependId="false">
             <p:dialog header="Agregar detalle" widgetVar="detalleDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="Detalle" style="text-align:center;">
                     <p:panelGrid  columns="2" columnClasses="label,value">
                         <h:outputText value="Producto" />
-                        <p:selectOneMenu id="advanced" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.idproducto}" 
-                                        panelStyle="width:180px" var="c"
-                                        filter="true" filterMatchMode="startsWith">
-
-                            <f:selectItems value="#{productoBean.productos}" var="producto"
-                                           itemLabel="#{producto.idproducto}" itemValue="#{producto.precioUnitario}"/>
-
-                            <p:column style="width:10%">
-                                <span class="flag flag-#{c.code}" style="width: 30px; height: 20px"/>
-                            </p:column>
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Name"/>
-                                </f:facet>
-                                <h:outputText value="#{c.name}"/>
-                            </p:column>
-
-                            <f:facet name="footer">
-                                <h:outputText value="#{productoBean.productos.size()} Productos"
-                                            style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
-                            </f:facet>
-                        </p:selectOneMenu>
-                        
                         <h:outputText value="Descripcion" />
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.descripcion}" />
 
@@ -190,7 +166,7 @@
                     </p:panelGrid>
                 </p:outputPanel>
                 </p:dialog>
-            </h:form>
+        </h:form>
     </h:body>
 
 </html>

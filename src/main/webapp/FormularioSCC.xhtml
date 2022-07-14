@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Crear Solicitud Compra</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <style type="text/css">
+        .shortColumn {
+            width: 120px;
+            align-items: "center";
+            align-content: "center";
+            text-align: center;
+            
+        }
+        dateColumn{
+            width: 150px;
+        }
+        form {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .botonesFinal{
+            margin-top: 30px;
+            margin-left: 30px;
+            margin-right: auto;
+        }
+        
+        .volverBoton{
+            background-color: buttonface;
+            color: #0070a3;
+            border-width: thin ;
+            border-color: #aed0ea;
+            border-radius: 7px;
+            font-size: 20em;
+            font-weight: bold;
+            height: 33px;
+            margin-top: 30px;
+        }
+    </style>
+    <h:body style="form">
+        <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+        
+        <h:form prependId="false" id="form">
+            <h1>Solicitud de compra completa</h1>
+            <p:growl id="messages" showDetail="true" />
+            <p:messages />
+            <h3>SECCION A. ESTRATEGIA DE CONTRATO</h3>
+            <p:outputPanel id="estrategiaContratoDetalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Tipo de Contrato" />
+                        <p:selectOneMenu id="option" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.tipoContrato}">
+                            <f:selectItem itemLabel="Orden de Compra" itemValue="OrdenDeCompra"/>
+                            <f:selectItem itemLabel="Orden de Servicio" itemValue="OrdenDeServicio"/>
+                            <f:selectItem itemLabel="Acuerdo General" itemValue="AcuerdoGeneral"/>
+                        </p:selectOneMenu>
+                        
+                        <h:outputText value="Fecha Requerida" />
+                        <p:datePicker id="fecha" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
+                              readonlyInput="false"/>
+                        <h:outputText value="Duracion" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.duracion}" />
+
+                        <h:outputText value="Lugar de Entrega" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.lugarEntrega}" />
+
+                        <h:outputText value="Extension" />
+                        <p:selectBooleanCheckbox value="#{estrategiaContratoBean.extension}" />
+                        
+                        <h:outputText value="Numero de Contratos" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.cantidadContrato}" />
+                         
+                        <h:outputText value="Jutificacion" />
+                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+        </h:form>
+        
+        <h:form prependId="false" id="detalleForm">
+            <h3>SECTION B. DETALLE DE REQUERIMIENTO</h3>
+            <p:growl id="msgDetalle" showDetail="true" />
+            <p:messages />
+
+            <p:dataTable 
+                id="detalles" 
+                var="detalle" 
+                value="#{detalleRequerimientoBean.detalleRequerimientos}" 
+                editable="true" 
+                rowKey="#{detalle.iddetalleRequerimiento}"
+                selection="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada}" 
+                selectionMode="single">
+                <p:column headerText="Producto" styleClass="shortColumn">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.idproducto.idproducto}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.idproducto.idproducto}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Descripción">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.descripcion}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.descripcion}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Cantidad" styleClass="shortColumn">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.cantidad}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.cantidad}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="PrecioUnitario" styleClass="shortColumn">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.precioUnitario}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.precioUnitario}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="PrecioTotal" styleClass="shortColumn">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.precioTotal}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.precioTotal}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Fecha Requerida" styleClass="dateColumn">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:datePicker id="fech" value="#{detalle.fechaRequerida}"
+                              readonlyInput="true"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:datePicker id="editfecha" value="#{detalle.fechaRequerida}" 
+                                          showIcon ="true"
+                                          mindate="#{detalleRequerimientoBean.currentDate}"
+                              readonlyInput="false"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Lugar Requerido">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.lugarRequerido}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{detalle.lugarRequerido}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalles">
+                        <p:ajax event="dialogReturn" update="detalles"/>
+                    </p:commandButton>
+                </f:facet>
+
+                <p:column headerText="Opciones" styleClass="shortColumn">
+                    <p:rowEditor />
+                </p:column>
+                <p:ajax event="rowEdit" listener="#{detalleRequerimientoBean.editListener}">
+                </p:ajax>
+            </p:dataTable>
+
+                <p:contextMenu for="detalles">
+                    <p:menuitem value="Eliminar" update="detalleRequerimientos" icon="ui-icon-close" actionListener="#{detalleRequerimientoBean.eliminarDetalleRequerimiento}" ajax="false"/>
+                </p:contextMenu>
+        </h:form>
+        <h:form id="dialogoForm" prependId="false">
+            <p:dialog header="Agregar detalle" widgetVar="detalleDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Detalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Producto" />
+                        <p:selectOneMenu id="advanced" value="#{detalleRequerimientoBean.seleccionProducto}" 
+                                        panelStyle="width:180px" var="c"
+                                        filter="true" filterMatchMode="startsWith">
+
+                            <f:selectItems value="#{productoBean.productos}" var="producto"
+                                           itemLabel="#{producto.idproducto}" itemValue="#{producto.idproducto}"/>
+
+                            <p:column style="width:10%">
+                                <span class="flag flag-#{c.idproducto}" style="width: 30px; height: 20px"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Name"/>
+                                </f:facet>
+                                <h:outputText value="#{c.idproducto}"/>
+                            </p:column>
+
+                            <f:facet name="footer">
+                                <h:outputText value="#{productoBean.productos.size()} Productos"
+                                            style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                            </f:facet>
+                        </p:selectOneMenu>
+                        
+                        <h:outputText value="Descripcion" />
+                        <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.descripcion}" />
+
+                        <h:outputText value="Cantidad" />
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.cantidad}"  minValue="0"
+                                       decimalPlaces="0" />
+                        <h:outputText value="Precio Unitario" />
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioUnitario}"  minValue="0"
+                                       decimalPlaces="2" />
+                        <h:outputText value="Fecha Requerida" />
+                        <p:datePicker id="minmax" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.fechaRequerida}" mindate="#{detalleRequerimientoBean.currentDate}"
+                              readonlyInput="false"/>
+                        <h:outputText value="Lugar Requerido" />
+                        <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.lugarRequerido}" />
+                        <f:facet name="footer">
+                            <h:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.agregarDetalleRequerimiento}" />
+                        </f:facet>
+                    </p:panelGrid>
+                </p:outputPanel>
+                </p:dialog>
+            </h:form>
+        <h:form>
+            <p:outputPanel >
+                <h:commandButton value="Volver" action="index" styleClass="volverBoton"/>
+                <p:spacer height="20px;" width="30px;"/>
+                <p:commandButton value="Agregar" actionListener="#{estrategiaContratoBean.agregarEstrategiaContrato}" />
+            </p:outputPanel>
+        </h:form>
+    </h:body>
+</html>

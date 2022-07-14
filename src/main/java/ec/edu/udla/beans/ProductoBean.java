@@ -25,7 +25,11 @@ public class ProductoBean {
         //Iniciamos las variables
         productos = productoService.listarProductos();
     }
-
+    
+    public Producto getProducto(int id){
+        return productoService.encontrarProductoPorId(new Producto(id));
+    }
+    
     public List<Producto> getProductos() {
         return productos;
     }
@@ -35,11 +39,11 @@ public class ProductoBean {
     }
 
    
-    public ProductoService getDetalleRequerimientoService() {
+    public ProductoService getProductoService() {
         return productoService;
     }
 
-    public void setDetalleRequerimientoService(ProductoService productoService) {
+    public void setProductoService(ProductoService productoService) {
         this.productoService = productoService;
     }
     

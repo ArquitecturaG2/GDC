@@ -39,25 +39,18 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @Column(name = "idproducto")
     private Integer idproducto;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "precioUnitario")
-    private float precioUnitario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproducto")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private Collection<DetalleRequerimiento> detalleRequerimientoCollection;
 
     public Producto() {
-        precioUnitario = 0.0f;
+
     }
 
     public Producto(Integer idproducto) {
         this.idproducto = idproducto;
     }
 
-    public Producto(Integer idproducto, float precioUnitario) {
-        this.idproducto = idproducto;
-        this.precioUnitario = precioUnitario;
-    }
 
     public Integer getIdproducto() {
         return idproducto;
@@ -66,15 +59,6 @@ public class Producto implements Serializable {
     public void setIdproducto(Integer idproducto) {
         this.idproducto = idproducto;
     }
-
-    public float getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    public void setPrecioUnitario(float precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
-
     
     @XmlTransient
     public Collection<DetalleRequerimiento> getDetalleRequerimientoCollection() {

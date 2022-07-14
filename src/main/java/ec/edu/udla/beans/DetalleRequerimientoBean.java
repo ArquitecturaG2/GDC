@@ -25,7 +25,7 @@ public class DetalleRequerimientoBean {
     List<DetalleRequerimiento> detalleRequerimientos;
     
     private Date currentDate;
-
+    
     public DetalleRequerimientoBean() {
     }
 
@@ -63,7 +63,10 @@ public class DetalleRequerimientoBean {
     }
 
     public void agregarDetalleRequerimiento() {
+        //ProductoBean pb = new ProductoBean();
         this.detalleRequerimientoSeleccionada.setIdproducto(new Producto(1));
+        //Producto buscado = pb.getProducto(seleccionProducto);
+        //this.detalleRequerimientoSeleccionada.setIdproducto(buscado);
         this.detalleRequerimientoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
         this.detalleRequerimientoSeleccionada.setPrecioTotal(
         this.detalleRequerimientoSeleccionada.getCantidad()*
@@ -97,6 +100,5 @@ public class DetalleRequerimientoBean {
     public void setCurrentDate(Date currentDate) {
         this.currentDate = currentDate;
     }
-    
     
 }
