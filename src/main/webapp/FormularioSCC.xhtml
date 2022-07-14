@@ -70,59 +70,59 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                             <h:outputText value="DATOS GENERALES"/>
                     </f:facet>
                     <h:outputText value="Numero: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.numero}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.numero}" />
 
                     <h:outputText value="Unidad: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.unidad}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.unidad}" />
 
                     <h:outputText value="Valor: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.valor}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.valor}" />
 
                     <h:outputText value="Descripcion" />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.descripcion}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.descripcion}" />
 
                     <h:outputText value="FuncionRequiriente: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.funcionRequiriente}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.funcionRequiriente}" />
 
                     <h:outputText value="FuncionDelegado: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.funcionDelegado}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.funcionDelegado}" />
 
                     <h:outputText value="PropuestaCompetitiva: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.propuestaCompetitiva}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.propuestaCompetitiva}" />
 
                     <h:outputText value="AdjudicacionDirecta" />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.adjudicacionDirecta}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.adjudicacionDirecta}" />
 
                     <h:outputText value="Proveedor" />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.id_proveedor}" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.id_proveedor}" />
                 </p:panelGrid>
                 <p:panelGrid  columns="2" columnClasses="label,value">
                     <f:facet name="header">
                         <h:outputText value="SECCION A. ESTRATEGIA DE CONTRATO" />
                     </f:facet>
-                    <p:selectOneMenu id="option" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.tipoContrato}">
+                    <p:selectOneMenu id="option" value="#{sccBean.estrategia.tipoContrato}">
                         <f:selectItem itemLabel="Orden de Compra" itemValue="OrdenDeCompra"/>
                         <f:selectItem itemLabel="Orden de Servicio" itemValue="OrdenDeServicio"/>
                         <f:selectItem itemLabel="Acuerdo General" itemValue="AcuerdoGeneral"/>
                     </p:selectOneMenu>
 
                     <h:outputText value="Fecha Requerida" />
-                    <p:datePicker id="fecha" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
+                    <p:datePicker id="fecha" value="#{sccBean.estrategia.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
                           readonlyInput="false"/>
                     <h:outputText value="Duracion" />
-                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.duracion}" />
+                    <h:inputText value="#{sccBean.estrategia.duracion}" />
 
                     <h:outputText value="Lugar de Entrega" />
-                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.lugarEntrega}" />
+                    <h:inputText value="#{sccBean.estrategia.lugarEntrega}" />
 
                     <h:outputText value="Extension" />
                     <p:selectBooleanCheckbox value="#{estrategiaContratoBean.extension}" />
 
                     <h:outputText value="Numero de Contratos" />
-                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.cantidadContrato}" />
+                    <h:inputText value="#{sccBean.estrategia.cantidadContrato}" />
 
                     <h:outputText value="Jutificacion" />
-                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
+                    <h:inputText value="#{sccBean.estrategia.justificacion}" />
                 </p:panelGrid>
             </p:panelGrid>
         </h:form>
@@ -135,7 +135,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <p:dataTable 
                 id="detalles" 
                 var="detalle" 
-                value="#{detalleRequerimientoBean.detalleRequerimientos}" 
+                value="#{sccBean.detalles}" 
                 editable="true" 
                 rowKey="#{detalle.iddetalleRequerimiento}"
                 selection="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada}" 
@@ -281,8 +281,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <p:outputPanel >
                 <h:commandButton value="Volver" action="index" styleClass="volverBoton"/>
                 <p:spacer height="20px;" width="30px;"/>
-                <p:commandButton value="Agregar" actionListener="#{estrategiaContratoBean.agregarEstrategiaContrato}" />
             </p:outputPanel>
         </h:form>
     </h:body>
+    
 </html>

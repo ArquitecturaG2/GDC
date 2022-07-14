@@ -50,7 +50,10 @@
                 <p:column headerText="Fecha requerida">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <p:inputText value="#{estrategia.fechaRequerida}"/>
+                            <p:datePicker id="editfecha" value="#{estrategia.fechaRequerida}" 
+                                          mindate="#{estrategiaContratoBean.currentDate}"
+                              readonlyInput="true">
+                            </p:datePicker>
                         </f:facet>
                         <f:facet name="input">
                             <p:datePicker id="editfecha" value="#{estrategia.fechaRequerida}" 
