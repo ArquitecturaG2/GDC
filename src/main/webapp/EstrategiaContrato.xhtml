@@ -144,7 +144,7 @@
                         </p:selectOneMenu>
                         
                         <h:outputText value="Fecha Requerida" />
-                        <p:datePicker id="minmax" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
+                        <p:datePicker id="fecha" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
                               readonlyInput="false"/>
                         <h:outputText value="Duracion" />
                         <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.duracion}" />
@@ -153,7 +153,7 @@
                         <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.lugarEntrega}" />
 
                         <h:outputText value="Extension" />
-                        <p:selectBooleanCheckbox value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.extension}"/>
+                        <p:selectBooleanCheckbox value="#{estrategiaContratoBean.extension}" />
                         
                         <h:outputText value="Numero de Contratos" />
                         <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.cantidadContrato}" />

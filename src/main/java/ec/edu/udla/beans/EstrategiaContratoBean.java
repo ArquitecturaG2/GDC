@@ -5,7 +5,9 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import ec.edu.udla.dominio.EstrategiaContrato;
+import ec.edu.udla.dominio.SolicitudCompraCompleta;
 import ec.edu.udla.servicio.EstrategiaContratoService;
+import java.util.Date;
 import org.primefaces.event.RowEditEvent;
 import javax.enterprise.context.RequestScoped;
 
@@ -18,6 +20,9 @@ public class EstrategiaContratoBean {
     private EstrategiaContrato estrategiaContratoSeleccionada;
 
     List<EstrategiaContrato> estrategiaContrato;
+    
+    private Date currentDate;
+    private boolean extension;
 
     public EstrategiaContratoBean() {
     }
@@ -27,6 +32,7 @@ public class EstrategiaContratoBean {
         //Iniciamos las variables
         estrategiaContrato = estrategiaContratoService.listarEstrategiaContrato();
         estrategiaContratoSeleccionada = new EstrategiaContrato();
+        currentDate = new Date();
     }
 
     public void editListener(RowEditEvent event) {
@@ -38,16 +44,16 @@ public class EstrategiaContratoBean {
         return estrategiaContrato;
     }
 
-    public void setEstrategiaContrato(List<EstrategiaContrato> personas) {
-        this.estrategiaContrato = personas;
+    public void setEstrategiaContrato(List<EstrategiaContrato> estrategiaContrato) {
+        this.estrategiaContrato = estrategiaContrato;
     }
 
     public EstrategiaContrato getEstrategiaContratoSeleccionada() {
         return estrategiaContratoSeleccionada;
     }
 
-    public void setEstrategiaContratoSeleccionada(EstrategiaContrato personaSeleccionada) {
-        this.estrategiaContratoSeleccionada = personaSeleccionada;
+    public void setEstrategiaContratoSeleccionada(EstrategiaContrato estrategiaContrato) {
+        this.estrategiaContratoSeleccionada = estrategiaContrato;
     }
 
     public void reiniciarEstrategiaContratoSeleccionada() {
@@ -55,6 +61,16 @@ public class EstrategiaContratoBean {
     }
 
     public void agregarEstrategiaContrato() {
+        Short n = null;
+        if(extension){
+            n = 1;
+        }else{
+            n = 0;
+        }
+        this.estrategiaContratoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
+        this.estrategiaContratoSeleccionada.setExtension(n);
+        
+        
         estrategiaContratoService.registrarEstrategiaContrato(this.estrategiaContratoSeleccionada);
         this.estrategiaContratoSeleccionada = null;
         //actualizamos la lista
@@ -74,5 +90,21 @@ public class EstrategiaContratoBean {
 
     public void setEstrategiaContratoService(EstrategiaContratoService estrategiaContratoService) {
         this.estrategiaContratoService = estrategiaContratoService;
+    }
+    
+    public Date getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
+    }
+    
+    public boolean getExtension(){
+        return extension;
+    }
+    
+    public void setExtension(boolean extension){
+        this.extension = extension;
     }
 }

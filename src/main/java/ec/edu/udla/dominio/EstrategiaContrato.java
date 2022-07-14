@@ -133,16 +133,9 @@ public class EstrategiaContrato implements Serializable {
         return extension;
     }
 
-    public void setExtension(Boolean extension) {
-        Short text;
-        String t;
-        if(extension){
-            t = "Si";
-        }else{
-            t = "No";
-        }
-        text = parseShort(t);
-        this.extension = text;
+    public void setExtension(Short extension) {
+        
+        this.extension = extension;
     }
 
     public int getCantidadContrato() {
