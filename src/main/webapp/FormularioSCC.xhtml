@@ -59,42 +59,76 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         </p:ajaxStatus>
         
         <h:form prependId="false" id="form">
-            <h1>Solicitud de compra completa</h1>
             <p:growl id="messages" showDetail="true" />
             <p:messages />
-            <h3>SECCION A. ESTRATEGIA DE CONTRATO</h3>
-            <p:outputPanel id="estrategiaContratoDetalle" style="text-align:center;">
-                    <p:panelGrid  columns="2" columnClasses="label,value">
-                        <h:outputText value="Tipo de Contrato" />
-                        <p:selectOneMenu id="option" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.tipoContrato}">
-                            <f:selectItem itemLabel="Orden de Compra" itemValue="OrdenDeCompra"/>
-                            <f:selectItem itemLabel="Orden de Servicio" itemValue="OrdenDeServicio"/>
-                            <f:selectItem itemLabel="Acuerdo General" itemValue="AcuerdoGeneral"/>
-                        </p:selectOneMenu>
-                        
-                        <h:outputText value="Fecha Requerida" />
-                        <p:datePicker id="fecha" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
-                              readonlyInput="false"/>
-                        <h:outputText value="Duracion" />
-                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.duracion}" />
+            <p:panelGrid  columns="2">    
+                <f:facet name="header">
+                    <h:outputText value="Solicitud de compra completa" />
+                </f:facet>
+                <p:panelGrid  columns="2" columnClasses="label,value" >
+                    <f:facet name="header">
+                            <h:outputText value="DATOS GENERALES"/>
+                    </f:facet>
+                    <h:outputText value="Numero: " />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.numero}" />
 
-                        <h:outputText value="Lugar de Entrega" />
-                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.lugarEntrega}" />
+                    <h:outputText value="Unidad: " />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.unidad}" />
 
-                        <h:outputText value="Extension" />
-                        <p:selectBooleanCheckbox value="#{estrategiaContratoBean.extension}" />
-                        
-                        <h:outputText value="Numero de Contratos" />
-                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.cantidadContrato}" />
-                         
-                        <h:outputText value="Jutificacion" />
-                        <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
-                    </p:panelGrid>
-                </p:outputPanel>
+                    <h:outputText value="Valor: " />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.valor}" />
+
+                    <h:outputText value="Descripcion" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.descripcion}" />
+
+                    <h:outputText value="FuncionRequiriente: " />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.funcionRequiriente}" />
+
+                    <h:outputText value="FuncionDelegado: " />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.funcionDelegado}" />
+
+                    <h:outputText value="PropuestaCompetitiva: " />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.propuestaCompetitiva}" />
+
+                    <h:outputText value="AdjudicacionDirecta" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.adjudicacionDirecta}" />
+
+                    <h:outputText value="Proveedor" />
+                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.id_proveedor}" />
+                </p:panelGrid>
+                <p:panelGrid  columns="2" columnClasses="label,value">
+                    <f:facet name="header">
+                        <h:outputText value="SECCION A. ESTRATEGIA DE CONTRATO" />
+                    </f:facet>
+                    <p:selectOneMenu id="option" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.tipoContrato}">
+                        <f:selectItem itemLabel="Orden de Compra" itemValue="OrdenDeCompra"/>
+                        <f:selectItem itemLabel="Orden de Servicio" itemValue="OrdenDeServicio"/>
+                        <f:selectItem itemLabel="Acuerdo General" itemValue="AcuerdoGeneral"/>
+                    </p:selectOneMenu>
+
+                    <h:outputText value="Fecha Requerida" />
+                    <p:datePicker id="fecha" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
+                          readonlyInput="false"/>
+                    <h:outputText value="Duracion" />
+                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.duracion}" />
+
+                    <h:outputText value="Lugar de Entrega" />
+                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.lugarEntrega}" />
+
+                    <h:outputText value="Extension" />
+                    <p:selectBooleanCheckbox value="#{estrategiaContratoBean.extension}" />
+
+                    <h:outputText value="Numero de Contratos" />
+                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.cantidadContrato}" />
+
+                    <h:outputText value="Jutificacion" />
+                    <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
+                </p:panelGrid>
+            </p:panelGrid>
         </h:form>
         
         <h:form prependId="false" id="detalleForm">
-            <h3>SECTION B. DETALLE DE REQUERIMIENTO</h3>
+            <h3>SECCION B. DETALLE DE REQUERIMIENTO</h3>
             <p:growl id="msgDetalle" showDetail="true" />
             <p:messages />
 
@@ -109,10 +143,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <p:column headerText="Producto" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.idproducto.idproducto}" />
+                            <h:outputText value="#{detalle.producto.idproducto}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{detalle.idproducto.idproducto}" />
+                            <p:inputText value="#{detalle.producto.idproducto}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -149,7 +183,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <p:column headerText="PrecioTotal" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.precioTotal}" />
+                            <h:outputText value="#{detalle.precioTotal}">
+                                <f:convertNumber pattern="#0.00"/>
+                            </h:outputText>
                         </f:facet>
                         <f:facet name="input">
                             <p:inputText value="#{detalle.precioTotal}" />
@@ -202,30 +238,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <p:outputPanel id="Detalle" style="text-align:center;">
                     <p:panelGrid  columns="2" columnClasses="label,value">
                         <h:outputText value="Producto" />
-                        <p:selectOneMenu id="advanced" value="#{detalleRequerimientoBean.seleccionProducto}" 
-                                        panelStyle="width:180px" var="c"
-                                        filter="true" filterMatchMode="startsWith">
-
+                        <p:selectOneMenu id="advanced" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.idProducto}"
+                                panelStyle="width:180px"  var="p"
+                                filter="true" filterMatchMode="startsWith">
+                            
                             <f:selectItems value="#{productoBean.productos}" var="producto"
                                            itemLabel="#{producto.idproducto}" itemValue="#{producto.idproducto}"/>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Name"/>
+                                    </f:facet>
+                                    <h:outputText value="#{p.idproducto}"/>
+                                </p:column>
 
-                            <p:column style="width:10%">
-                                <span class="flag flag-#{c.idproducto}" style="width: 30px; height: 20px"/>
-                            </p:column>
-
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Name"/>
+                                <f:facet name="footer">
+                                    <h:outputText value="#{productoBean.productos.size()} productos"
+                                                style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
                                 </f:facet>
-                                <h:outputText value="#{c.idproducto}"/>
-                            </p:column>
-
-                            <f:facet name="footer">
-                                <h:outputText value="#{productoBean.productos.size()} Productos"
-                                            style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
-                            </f:facet>
-                        </p:selectOneMenu>
-                        
+                            </p:selectOneMenu>
                         <h:outputText value="Descripcion" />
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.descripcion}" />
 

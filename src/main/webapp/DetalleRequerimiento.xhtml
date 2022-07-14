@@ -50,10 +50,10 @@
                 <p:column headerText="Producto" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.idproducto.idproducto}" />
+                            <h:outputText value="#{detalle.producto.idproducto}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{detalle.idproducto.idproducto}" />
+                            <p:inputText value="#{detalle.producto.idproducto}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -90,7 +90,9 @@
                 <p:column headerText="PrecioTotal" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.precioTotal}" />
+                            <h:outputText value="#{detalle.precioTotal}">
+                                <f:convertNumber pattern="#0.00"/>
+                            </h:outputText>
                         </f:facet>
                         <f:facet name="input">
                             <p:inputText value="#{detalle.precioTotal}" />
@@ -146,11 +148,29 @@
                 <p:outputPanel id="Detalle" style="text-align:center;">
                     <p:panelGrid  columns="2" columnClasses="label,value">
                         <h:outputText value="Producto" />
+                        <p:selectOneMenu id="advanced" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.idProducto}"
+                                panelStyle="width:180px"  var="p"
+                                filter="true" filterMatchMode="startsWith">
+                            
+                            <f:selectItems value="#{productoBean.productos}" var="producto"
+                                           itemLabel="#{producto.idproducto}" itemValue="#{producto.idproducto}"/>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Name"/>
+                                    </f:facet>
+                                    <h:outputText value="#{p.idproducto}"/>
+                                </p:column>
+
+                                <f:facet name="footer">
+                                    <h:outputText value="#{productoBean.productos.size()} productos"
+                                                style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                                </f:facet>
+                            </p:selectOneMenu>
                         <h:outputText value="Descripcion" />
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.descripcion}" />
 
                         <h:outputText value="Cantidad" />
-                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.cantidad}"  minValue="0"
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.cantidad}"  minValue="0" 
                                        decimalPlaces="0" />
                         <h:outputText value="Precio Unitario" />
                         <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioUnitario}"  minValue="0"

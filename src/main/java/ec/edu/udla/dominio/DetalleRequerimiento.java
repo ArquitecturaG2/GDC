@@ -159,13 +159,22 @@ public class DetalleRequerimiento implements Serializable {
         this.lugarRequerido = lugarRequerido;
     }
 
-    public Producto getIdproducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setIdproducto(Producto idproducto) {
+    public void setProducto(Producto idproducto) {
         this.producto = idproducto;
     }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+    
 
     public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {
         return idsolicitudCompraCompleta;
