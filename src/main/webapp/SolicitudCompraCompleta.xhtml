@@ -148,8 +148,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
         <h:form id="dialogoForm" prependId="false">
             <p:dialog header="Agregar Solicitud" widgetVar="solicitudCompraCompletaDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="personaDetalle" style="text-align:center;">
-                    <p:panelGrid  columns="2" columnClasses="label,value">
+                <p:outputPanel id="solicitudDetalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">                        
                         <h:outputText value="Numero: " />
                         <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.numero}" />
 
@@ -173,6 +173,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
                         <h:outputText value="AdjudicacionDirecta" />
                         <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.adjudicacionDirecta}" />
+                        
+                        <h:outputText value="Proveedor" />
+                        <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.id_proveedor}" />
                      
                         <f:facet name="footer">
                             <h:commandButton value="Agregar" actionListener="#{solicitudCompraCompletaBean.agregarSolicitudCompraCompleta}" />
