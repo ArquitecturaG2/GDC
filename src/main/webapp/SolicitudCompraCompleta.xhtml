@@ -15,21 +15,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <title>Solicitud de Compra Completa</title>
     </h:head>
     <h:body>
-
+        
+         <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+        
         <h:form prependId="false" id="form">
 
             <p:growl id="messages" showDetail="true" />
             <p:messages />
             
             <p:dataTable 
-                id="solicitudCompraCompleta" 
-                var="solicitud_compra_completa" 
+                id="solicitudCompraCompletas" 
+                var="solicitudCompraCompleta" 
                 value="#{solicitudCompraCompletaBean.solicitudCompraCompleta}" 
                 editable="true" 
                 rowKey="#{solicitudCompraCompleta.idsolicitudCompraCompleta}"
                 selection="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada}" 
-                selectionMode="single"
-                lazy="true">
+                selectionMode="single">
 
                 <f:facet name="header">  
                     Lista de Solicitudes  
@@ -118,8 +126,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <f:facet name="footer">
                     <p:commandButton value="Regresar" action="index" />
                     <p:spacer height="5px;"/>
-                    <p:commandButton value="Agregar" actionListener="#{solicitudCompraCompletaBean.reiniciarSolicitudCompraCompletaSeleccionada}" oncomplete="PF('solicitudDialogo').show();" update="solicitudCompraCompleta">
-                        <p:ajax event="dialogReturn" update="solicitudCompraCompleta"/>
+                    <p:commandButton value="Agregar" actionListener="#{solicitudCompraCompletaBean.reiniciarSolicitudCompraCompletaSeleccionada}" oncomplete="PF('solicitudCompraCompletaDialogo').show();" update="solicitudCompraCompletas">
+                        <p:ajax event="dialogReturn" update="solicitudCompraCompletas"/>
                     </p:commandButton>
                 </f:facet>
 
@@ -133,13 +141,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
 
 
-            <p:contextMenu for="solicitudCompraCompleta">
-                <p:menuitem value="Eliminar" update="personas" icon="ui-icon-close" actionListener="#{solicitudCompraCompletaBean.eliminarSolicitudCompraCompleta}" ajax="false"/>
+            <p:contextMenu for="solicitudCompraCompletas">
+                <p:menuitem value="Eliminar" update="solicitudCompraCompletas" icon="ui-icon-close" actionListener="#{solicitudCompraCompletaBean.eliminarSolicitudCompraCompleta}" ajax="false"/>
             </p:contextMenu>
         </h:form>
 
         <h:form id="dialogoForm" prependId="false">
-            <p:dialog header="Agregar Solicitud" widgetVar="solicitudDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="Agregar Solicitud" widgetVar="solicitudCompraCompletaDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="personaDetalle" style="text-align:center;">
                     <p:panelGrid  columns="2" columnClasses="label,value">
                         <h:outputText value="Numero: " />
