@@ -29,7 +29,7 @@
                 var="estrategia" 
                 value="#{estrategiaContratoBean.estrategiaContrato}" 
                 editable="true" 
-                rowKey="#{estrategiaContrato.idestrategia_contrato}"
+                rowKey="#{estrategia.idestrategiaContrato}"
                 selection="#{estrategiaContratoBean.estrategiaContratoSeleccionada}" 
                 selectionMode="single">
 
@@ -40,70 +40,70 @@
                 <p:column headerText="Tipo de Contrato">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.tipoContrato}" />
+                            <h:outputText value="#{estrategia.tipoContrato}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.tipoContrato}" />
+                            <p:inputText value="#{estrategia.tipoContrato}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 <p:column headerText="Fecha requerida">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.fechaRequerida}" />
+                            <h:outputText value="#{estrategia.fechaRequerida}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.fechaRequerida}"/>
+                            <p:inputText value="#{estrategia.fechaRequerida}"/>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 <p:column headerText="Duración">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.duracion}" />
+                            <h:outputText value="#{estrategia.duracion}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.duracion}" />
+                            <p:inputText value="#{estrategia.duracion}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 <p:column headerText="Lugar de Entrega">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.lugarEntrega}" />
+                            <h:outputText value="#{estrategia.lugarEntrega}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.lugarEntrega}" />
+                            <p:inputText value="#{estrategia.lugarEntrega}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 <p:column headerText="Extensión">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.extension}" />
+                            <h:outputText value="#{estrategia.extension}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.extension}" />
+                            <p:inputText value="#{estrategia.extension}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 <p:column headerText="Cantidad de Contratos">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.cantidadContrato}" />
+                            <h:outputText value="#{estrategia.cantidadContrato}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.cantidadContrato}" />
+                            <p:inputText value="#{estrategia.cantidadContrato}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 <p:column headerText="Justificación">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategiaContrato.justificacion}" />
+                            <h:outputText value="#{estrategia.justificacion}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategiaContrato.justificacion}" />
+                            <p:inputText value="#{estrategia.justificacion}" />
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -124,8 +124,6 @@
                 <p:ajax event="rowEdit" listener="#{estrategiaContratoBean.editListener}">
                 </p:ajax>
             </p:dataTable>
-
-
 
             <p:contextMenu for="estrategiaContrato">
                 <p:menuitem value="Eliminar" update="estrategiaContrato" icon="ui-icon-close" actionListener="#{estrategiaContratoBean.eliminarEstrategiaContrato}" ajax="false"/>
