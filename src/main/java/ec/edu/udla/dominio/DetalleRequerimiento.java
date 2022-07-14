@@ -75,15 +75,17 @@ public class DetalleRequerimiento implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "lugarRequerido")
     private String lugarRequerido;
-    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
-    @ManyToOne(optional = false)
-    private Producto idproducto;
+    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto",insertable=false,updatable=false)
+    private Producto producto;
+    @Basic(optional = false)
+    @Column(name = "idproducto")
+    private int idProducto;
     @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa")
     @ManyToOne(optional = false)
     private SolicitudCompraCompleta idsolicitudCompraCompleta;
 
     public DetalleRequerimiento() {
-        idproducto = new Producto();
+        producto = new Producto();
         idsolicitudCompraCompleta = new SolicitudCompraCompleta();
     }
 
@@ -157,13 +159,22 @@ public class DetalleRequerimiento implements Serializable {
         this.lugarRequerido = lugarRequerido;
     }
 
-    public Producto getIdproducto() {
-        return idproducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdproducto(Producto idproducto) {
-        this.idproducto = idproducto;
+    public void setProducto(Producto idproducto) {
+        this.producto = idproducto;
     }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+    
 
     public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {
         return idsolicitudCompraCompleta;
