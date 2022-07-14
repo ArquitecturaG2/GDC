@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -44,8 +46,8 @@ public class SolicitudCompraCompleta implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idsolicitud_compra_completa")
     private Integer idsolicitudCompraCompleta;
     @Basic(optional = false)
@@ -90,9 +92,13 @@ public class SolicitudCompraCompleta implements Serializable {
     private Collection<EstrategiaContrato> estrategiaContratoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
     private Collection<DetalleRequerimiento> detalleRequerimientoCollection;
-    @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor")
+    @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor",insertable=false,updatable=false)
     @ManyToOne(optional = false)
     private Proveedor idproveedor;
+    
+    @Basic(optional = false)
+    @Column(name = "idproveedor")
+    private Integer id_proveedor;
 
     public SolicitudCompraCompleta() {
     }
@@ -112,6 +118,7 @@ public class SolicitudCompraCompleta implements Serializable {
         this.propuestaCompetitiva = propuestaCompetitiva;
         this.adjudicacionDirecta = adjudicacionDirecta;
     }
+    
 
     public Integer getIdsolicitudCompraCompleta() {
         return idsolicitudCompraCompleta;
@@ -211,6 +218,14 @@ public class SolicitudCompraCompleta implements Serializable {
         this.idproveedor = idproveedor;
     }
 
+    public Integer getId_proveedor() {
+        return id_proveedor;
+    }
+
+    public void setId_proveedor(Integer id_proveedor) {
+        this.id_proveedor = id_proveedor;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
