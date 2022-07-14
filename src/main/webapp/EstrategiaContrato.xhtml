@@ -50,10 +50,14 @@
                 <p:column headerText="Fecha requerida">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategia.fechaRequerida}" />
+                            <p:inputText value="#{estrategia.fechaRequerida}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategia.fechaRequerida}"/>
+                            <p:datePicker id="editfecha" value="#{estrategia.fechaRequerida}" 
+                                          showIcon ="true"
+                                          mindate="#{estrategiaContratoBean.currentDate}"
+                              readonlyInput="false">
+                            </p:datePicker>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -111,7 +115,7 @@
                 <f:facet name="footer">
                     <p:commandButton value="Regresar" action="index" />
                     <p:spacer height="5px;"/>
-                    <p:commandButton value="Agregar" actionListener="#{estrategiaContratoBean.reiniciarEstrategiaContratoSeleccionada}" oncomplete="PF('estrategiaContratoDialogo').show();"
+                    <p:commandButton value="Agregar" actionListener="#{estrategia.fechaRequerida}" oncomplete="PF('estrategiaContratoDialogo').show();"
                                      update="estrategiaContrato">
                         <p:ajax event="dialogReturn" update="estrategiaContrato"/>
                     </p:commandButton>

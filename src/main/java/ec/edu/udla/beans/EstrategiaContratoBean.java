@@ -32,12 +32,13 @@ public class EstrategiaContratoBean {
         //Iniciamos las variables
         estrategiaContrato = estrategiaContratoService.listarEstrategiaContrato();
         estrategiaContratoSeleccionada = new EstrategiaContrato();
-        //currentDate = new Date();
+        currentDate = new Date();
     }
 
     public void editListener(RowEditEvent event) {
         EstrategiaContrato estrategiaContratoEditEvent = (EstrategiaContrato) event.getObject();
         estrategiaContratoService.modificarEstrategiaContrato(estrategiaContratoEditEvent);
+        
     }
 
     public List<EstrategiaContrato> getEstrategiaContrato() {
