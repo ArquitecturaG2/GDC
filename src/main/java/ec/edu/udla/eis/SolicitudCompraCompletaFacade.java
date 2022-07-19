@@ -28,4 +28,9 @@ public class SolicitudCompraCompletaFacade extends AbstractFacade<SolicitudCompr
         super(SolicitudCompraCompleta.class);
     }
     
+    public int createReturnID(SolicitudCompraCompleta solicitudCompraCompleta) {
+        em.persist(solicitudCompraCompleta);
+        em.flush();
+        return solicitudCompraCompleta.getIdsolicitudCompraCompleta();
+    }
 }

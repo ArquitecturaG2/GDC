@@ -8,6 +8,8 @@ import ec.edu.udla.dominio.DetalleRequerimiento;
 public interface DetalleRequerimientoService {
     
     public List<DetalleRequerimiento> listarDetalleRequerimiento();
+    
+    public List<DetalleRequerimiento> listarDetalleRequerimientoPorSolicitudId(int solicitudId);
 
     public DetalleRequerimiento encontrarDetalleRequerimientoPorId(DetalleRequerimiento detalleRequerimiento);
 

@@ -75,6 +75,18 @@ public class DetalleRequerimientoBean {
         this.inicializar();
     }
 
+    public void agregarDetalleTemp() {
+        this.detalleRequerimientoSeleccionada.setProducto(new Producto(this.detalleRequerimientoSeleccionada.getIdProducto()));
+        //this.detalleRequerimientoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
+        this.detalleRequerimientoSeleccionada.setPrecioTotal(
+        this.detalleRequerimientoSeleccionada.getCantidad()*
+        this.detalleRequerimientoSeleccionada.getPrecioUnitario());
+        
+        detalleRequerimientos.add(this.detalleRequerimientoSeleccionada);
+        
+        this.detalleRequerimientoSeleccionada = new DetalleRequerimiento();
+    }
+    
     public void eliminarDetalleRequerimiento() {
         detalleRequerimientoService.eliminarDetalleRequerimiento(this.detalleRequerimientoSeleccionada);
         this.detalleRequerimientoSeleccionada = null;

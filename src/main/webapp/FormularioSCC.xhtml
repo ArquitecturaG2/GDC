@@ -6,7 +6,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
@@ -14,11 +13,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <title>Crear Solicitud Compra</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+    <!--Estilos-->
     <style type="text/css">
         .shortColumn {
             width: 120px;
-            align-items: "center";
-            align-content: "center";
+            align-items: center;
+            align-content: center;
             text-align: center;
             
         }
@@ -57,89 +57,62 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                 <h:outputText value="" />
             </f:facet>
         </p:ajaxStatus>
-        
-        <h:form prependId="false" id="form">
-            <p:growl id="messages" showDetail="true" />
-            <p:messages />
-            <p:panelGrid  columns="2">    
+        <p:panelGrid  columns="2" columnClasses="value,value" >    
                 <f:facet name="header">
                     <h:outputText value="Solicitud de compra completa" />
                 </f:facet>
                 <p:panelGrid  columns="2" columnClasses="label,value" >
+                    
                     <f:facet name="header">
                             <h:outputText value="DATOS GENERALES"/>
                     </f:facet>
                     <h:outputText value="Numero: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.numero}" />
-
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.numero}" />
                     <h:outputText value="Unidad: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.unidad}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.unidad}" />
 
                     <h:outputText value="Valor: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.valor}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.valor}" />
 
                     <h:outputText value="Descripcion" />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.descripcion}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.descripcion}" />
 
                     <h:outputText value="FuncionRequiriente: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.funcionRequiriente}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.funcionRequiriente}" />
 
                     <h:outputText value="FuncionDelegado: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.funcionDelegado}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.funcionDelegado}" />
 
                     <h:outputText value="PropuestaCompetitiva: " />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.propuestaCompetitiva}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.propuestaCompetitiva}" />
 
                     <h:outputText value="AdjudicacionDirecta" />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.adjudicacionDirecta}" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.adjudicacionDirecta}" />
 
                     <h:outputText value="Proveedor" />
-                    <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.id_proveedor}" />
-                </p:panelGrid>
-                <p:panelGrid  columns="2" columnClasses="label,value">
-                    <f:facet name="header">
-                        <h:outputText value="SECCION A. ESTRATEGIA DE CONTRATO" />
+                    <h:inputText value="#{sccBean.solicitudCompraCompleta.id_proveedor}" />
+                    <f:facet name="footer">
+                            <h:commandButton value="Agregar" actionListener="#{sccBean.agregarSolicitudCompraCompleta}" />
                     </f:facet>
-                    <p:selectOneMenu id="option" value="#{sccBean.estrategia.tipoContrato}">
-                        <f:selectItem itemLabel="Orden de Compra" itemValue="OrdenDeCompra"/>
-                        <f:selectItem itemLabel="Orden de Servicio" itemValue="OrdenDeServicio"/>
-                        <f:selectItem itemLabel="Acuerdo General" itemValue="AcuerdoGeneral"/>
-                    </p:selectOneMenu>
-
-                    <h:outputText value="Fecha Requerida" />
-                    <p:datePicker id="fecha" value="#{sccBean.estrategia.fechaRequerida}" mindate="#{estrategiaContratoBean.currentDate}"
-                          readonlyInput="false"/>
-                    <h:outputText value="Duracion" />
-                    <h:inputText value="#{sccBean.estrategia.duracion}" />
-
-                    <h:outputText value="Lugar de Entrega" />
-                    <h:inputText value="#{sccBean.estrategia.lugarEntrega}" />
-
-                    <h:outputText value="Extension" />
-                    <p:selectBooleanCheckbox value="#{estrategiaContratoBean.extension}" />
-
-                    <h:outputText value="Numero de Contratos" />
-                    <h:inputText value="#{sccBean.estrategia.cantidadContrato}" />
-
-                    <h:outputText value="Jutificacion" />
-                    <h:inputText value="#{sccBean.estrategia.justificacion}" />
                 </p:panelGrid>
-            </p:panelGrid>
-        </h:form>
         
-        <h:form prependId="false" id="detalleForm">
-            <h3>SECCION B. DETALLE DE REQUERIMIENTO</h3>
-            <p:growl id="msgDetalle" showDetail="true" />
-            <p:messages />
+        </p:panelGrid>
+        <h:form prependId="false" id="form">
 
+            <p:growl id="messages" showDetail="true" />
+            <p:messages />
             <p:dataTable 
                 id="detalles" 
                 var="detalle" 
-                value="#{sccBean.detalles}" 
+                value="#{sccBean.dtBean.detalleRequerimientos}" 
                 editable="true" 
                 rowKey="#{detalle.iddetalleRequerimiento}"
-                selection="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada}" 
+                selection="#{sccBean.dtBean.detalleRequerimientoSeleccionada}" 
                 selectionMode="single">
+
+                <f:facet name="header">  
+                    Detalle de requerimientos 
+                </f:facet>
                 <p:column headerText="Producto" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
@@ -192,7 +165,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
-                <p:column headerText="Fecha Requerida" styleClass="dateColumn">
+                <p:column headerText="fechaRequerida">
                     <p:cellEditor>
                         <f:facet name="output">
                             <p:datePicker id="fech" value="#{detalle.fechaRequerida}"
@@ -206,7 +179,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
-                <p:column headerText="Lugar Requerido">
+                <p:column headerText="lugarRequerido">
                     <p:cellEditor>
                         <f:facet name="output">
                             <h:outputText value="#{detalle.lugarRequerido}" />
@@ -217,21 +190,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     </p:cellEditor>
                 </p:column>
                 <f:facet name="footer">
+                    <h:commandButton value="Volver" action="index" />
+                    <p:spacer height="20px;" width="20px;"/>
                     <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalles">
                         <p:ajax event="dialogReturn" update="detalles"/>
                     </p:commandButton>
                 </f:facet>
 
-                <p:column headerText="Opciones" styleClass="shortColumn">
+                <p:column headerText="Opciones" style="width:50px">
                     <p:rowEditor />
                 </p:column>
                 <p:ajax event="rowEdit" listener="#{detalleRequerimientoBean.editListener}">
                 </p:ajax>
             </p:dataTable>
-
-                <p:contextMenu for="detalles">
-                    <p:menuitem value="Eliminar" update="detalleRequerimientos" icon="ui-icon-close" actionListener="#{detalleRequerimientoBean.eliminarDetalleRequerimiento}" ajax="false"/>
-                </p:contextMenu>
         </h:form>
         <h:form id="dialogoForm" prependId="false">
             <p:dialog header="Agregar detalle" widgetVar="detalleDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
@@ -260,7 +231,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.descripcion}" />
 
                         <h:outputText value="Cantidad" />
-                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.cantidad}"  minValue="0"
+                        <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.cantidad}"  minValue="0" 
                                        decimalPlaces="0" />
                         <h:outputText value="Precio Unitario" />
                         <p:inputNumber value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.precioUnitario}"  minValue="0"
@@ -271,17 +242,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         <h:outputText value="Lugar Requerido" />
                         <h:inputText value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.lugarRequerido}" />
                         <f:facet name="footer">
-                            <h:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.agregarDetalleRequerimiento}" />
+                            <h:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.agregarDetalleTemp}" />
                         </f:facet>
                     </p:panelGrid>
                 </p:outputPanel>
                 </p:dialog>
-            </h:form>
-        <h:form>
-            <p:outputPanel >
-                <h:commandButton value="Volver" action="index" styleClass="volverBoton"/>
-                <p:spacer height="20px;" width="30px;"/>
-            </p:outputPanel>
         </h:form>
     </h:body>
     
