@@ -50,13 +50,17 @@
                 <p:column headerText="Fecha requerida">
                     <p:cellEditor>
                         <f:facet name="output">
+<<<<<<< HEAD
+                            <p:datePicker id="fechaOu" value="#{estrategia.fechaRequerida}" 
+=======
                             <p:datePicker id="fecha" value="#{estrategia.fechaRequerida}" 
+>>>>>>> b1cdd25c91fa95466c6ceb80520f5ccbace6c0e7
                                           mindate="#{estrategiaContratoBean.currentDate}"
                               readonlyInput="true">
                             </p:datePicker>
                         </f:facet>
                         <f:facet name="input">
-                            <p:datePicker id="editfecha" value="#{estrategia.fechaRequerida}" 
+                            <p:datePicker id="fechaIn" value="#{estrategia.fechaRequerida}" 
                                           showIcon ="true"
                                           mindate="#{estrategiaContratoBean.currentDate}"
                               readonlyInput="false">
@@ -114,6 +118,16 @@
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
+                <p:column headerText="Solicitud de Compra">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{estrategia.idsolicitudCompraCompleta.idsolicitudCompraCompleta}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{estrategia.idsolicitudCompraCompleta.idsolicitudCompraCompleta}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
                 
                 <f:facet name="footer">
                     <p:commandButton value="Regresar" action="index" />
@@ -165,6 +179,24 @@
                          
                         <h:outputText value="Jutificacion" />
                         <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
+                        
+                        <h:outputText value="Solicitud de Compra" />                 
+                        <p:selectOneMenu id="option2" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.idsolicitudCompraCompleta}"
+                                panelStyle="width:180px"  var="sol"
+                                filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value="#{solicitudCompraCompletaBean.solicitudCompraCompleta}" var="solicitudCC"
+                                           itemLabel="#{solicitudCC.idsolicitudCompraCompleta}" itemValue="#{solicitudCC.idsolicitudCompraCompleta}"/>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Solicitud"/>
+                                    </f:facet>
+                                    <h:outputText value="#{sol.idsolicitudCompraCompleta.idsolicitudCompraCompleta}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <h:outputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.size()}"
+                                                style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                                </f:facet>
+                        </p:selectOneMenu>
                         
                         <f:facet name="footer">
                             <h:commandButton value="Agregar" actionListener="#{estrategiaContratoBean.agregarEstrategiaContrato}" />
