@@ -45,6 +45,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SolicitudCompraCompleta.findByAdjudicacionDirecta", query = "SELECT s FROM SolicitudCompraCompleta s WHERE s.adjudicacionDirecta = :adjudicacionDirecta")})
 public class SolicitudCompraCompleta implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idsolicitud_compra_completa")
+    private Integer idsolicitudCompraCompleta;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 7)
@@ -84,16 +90,8 @@ public class SolicitudCompraCompleta implements Serializable {
     @Column(name = "adjudicacionDirecta")
     private short adjudicacionDirecta;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
-    private EstrategiaContrato estrategiaContrato;
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idsolicitud_compra_completa")
-    private Integer idsolicitudCompraCompleta;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
-    private Collection<EstrategiaContrato> estrategiaContratoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitudCompraCompleta")
+    private EstrategiaContrato estrategiaContrato;  
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "solicitudCompraCompleta")
     private Collection<DetalleRequerimiento> detalleRequerimientoCollection;
     @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor",insertable=false,updatable=false)
     @ManyToOne(optional = false)
@@ -122,23 +120,12 @@ public class SolicitudCompraCompleta implements Serializable {
         this.adjudicacionDirecta = adjudicacionDirecta;
     }
     
-
     public Integer getIdsolicitudCompraCompleta() {
         return idsolicitudCompraCompleta;
     }
 
     public void setIdsolicitudCompraCompleta(Integer idsolicitudCompraCompleta) {
         this.idsolicitudCompraCompleta = idsolicitudCompraCompleta;
-    }
-
-
-    @XmlTransient
-    public Collection<EstrategiaContrato> getEstrategiaContratoCollection() {
-        return estrategiaContratoCollection;
-    }
-
-    public void setEstrategiaContratoCollection(Collection<EstrategiaContrato> estrategiaContratoCollection) {
-        this.estrategiaContratoCollection = estrategiaContratoCollection;
     }
 
     @XmlTransient

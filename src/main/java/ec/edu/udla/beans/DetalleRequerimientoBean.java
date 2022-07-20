@@ -8,9 +8,7 @@ import ec.edu.udla.dominio.DetalleRequerimiento;
 import ec.edu.udla.dominio.Producto;
 import ec.edu.udla.dominio.SolicitudCompraCompleta;
 import ec.edu.udla.servicio.DetalleRequerimientoService;
-import ec.edu.udla.servicio.SolicitudCompraCompletaService;
 import java.util.Date;
-import java.util.HashSet;
 import org.primefaces.event.RowEditEvent;
 import javax.enterprise.context.RequestScoped;
 
@@ -21,8 +19,6 @@ public class DetalleRequerimientoBean {
     @Inject
     private DetalleRequerimientoService detalleRequerimientoService;
     
-    @Inject
-    private SolicitudCompraCompletaService solicitudCompraCompletaService;
 
     private DetalleRequerimiento detalleRequerimientoSeleccionada;
 
@@ -68,7 +64,7 @@ public class DetalleRequerimientoBean {
 
     public void agregarDetalleRequerimiento() {
         this.detalleRequerimientoSeleccionada.setProducto(new Producto(this.detalleRequerimientoSeleccionada.getIdProducto()));
-        this.detalleRequerimientoSeleccionada.setSolicitudCompraCompleta(new SolicitudCompraCompleta(1));
+        this.detalleRequerimientoSeleccionada.setSolicitudCompraCompleta(new SolicitudCompraCompleta(detalleRequerimientoSeleccionada.getIdSolicitudCompraCompleta()));
         this.detalleRequerimientoSeleccionada.setPrecioTotal(
         this.detalleRequerimientoSeleccionada.getCantidad()*
         this.detalleRequerimientoSeleccionada.getPrecioUnitario());
@@ -81,7 +77,6 @@ public class DetalleRequerimientoBean {
 
     public void agregarDetalleTemp() {
         this.detalleRequerimientoSeleccionada.setProducto(new Producto(this.detalleRequerimientoSeleccionada.getIdProducto()));
-        //this.detalleRequerimientoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
         this.detalleRequerimientoSeleccionada.setPrecioTotal(
         this.detalleRequerimientoSeleccionada.getCantidad()*
         this.detalleRequerimientoSeleccionada.getPrecioUnitario());

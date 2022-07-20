@@ -17,6 +17,17 @@
             text-align: center; 
         }
         
+        .volverBoton{
+            background-color: buttonface;
+            color: #0070a3;
+            border-width: thin ;
+            border-color: #aed0ea;
+            border-radius: 7px;
+            font-size: 20em;
+            font-weight: bold;
+            height: 33px;
+        }
+        
         .dateColumn{
             width: 150px;
         }
@@ -157,7 +168,7 @@
                     <p:rowEditor />
                 </p:column>
                 <f:facet name="footer">
-                    <h:commandButton value="Volver" action="index" />
+                    <h:commandButton value="Volver" action="index" styleClass="volverBoton"/>
                     <p:spacer height="20px;" width="20px;"/>
                     <p:commandButton value="Agregar" actionListener="#{detalleRequerimientoBean.reiniciarDetalleRequerimientoSeleccionada}" oncomplete="PF('detalleDialogo').show();" update="detalles">
                         <p:ajax event="dialogReturn" update="detalles"/>

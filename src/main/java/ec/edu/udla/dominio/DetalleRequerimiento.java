@@ -76,6 +76,7 @@ public class DetalleRequerimiento implements Serializable {
     @Column(name = "lugarRequerido")
     private String lugarRequerido;
     @JoinColumn(name = "idproducto", referencedColumnName = "idproducto",insertable=false,updatable=false)
+    @ManyToOne(optional = false)
     private Producto producto;
     @Basic(optional = false)
     @Column(name = "idproducto")
