@@ -5,6 +5,8 @@
 package ec.edu.udla.eis;
 
 import ec.edu.udla.dominio.DetalleRequerimiento;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +28,13 @@ public class DetalleRequerimientoFacade extends AbstractFacade<DetalleRequerimie
 
     public DetalleRequerimientoFacade() {
         super(DetalleRequerimiento.class);
+    }
+    
+    public List<DetalleRequerimiento> findbySolicitudId(int idSolicitud) {
+        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(DetalleRequerimiento.class));
+        List<DetalleRequerimiento> all = getEntityManager().createQuery(cq).getResultList();
+        return all.stream().filter(n->n.getIdsolicitudCompraCompleta().getIdsolicitudCompraCompleta()==idSolicitud).collect(Collectors.toList());
     }
     
 }

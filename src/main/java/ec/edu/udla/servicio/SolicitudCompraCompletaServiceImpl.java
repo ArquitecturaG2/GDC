@@ -35,4 +35,5 @@ public class SolicitudCompraCompletaServiceImpl implements SolicitudCompraComple
     public void eliminarSolicitudCompraCompleta(SolicitudCompraCompleta solicitudCompraCompleta) {
         solicitudCompraCompletaFacadeLocal.remove(solicitudCompraCompleta);
     }
+
 }

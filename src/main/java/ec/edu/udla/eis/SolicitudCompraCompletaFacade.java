@@ -27,5 +27,5 @@ public class SolicitudCompraCompletaFacade extends AbstractFacade<SolicitudCompr
     public SolicitudCompraCompletaFacade() {
         super(SolicitudCompraCompleta.class);
     }
-    
+
 }

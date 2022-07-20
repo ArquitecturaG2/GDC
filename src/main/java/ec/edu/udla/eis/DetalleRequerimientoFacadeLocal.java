@@ -26,6 +26,8 @@ public interface DetalleRequerimientoFacadeLocal {
     List<DetalleRequerimiento> findAll();
 
     List<DetalleRequerimiento> findRange(int[] range);
+    
+    List<DetalleRequerimiento> findbySolicitudId(int idSolicitud);
 
     int count();
     

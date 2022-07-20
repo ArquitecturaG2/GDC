@@ -16,7 +16,7 @@ import javax.ejb.Local;
 public interface SolicitudCompraCompletaFacadeLocal {
 
     void create(SolicitudCompraCompleta solicitudCompraCompleta);
-
+    
     void edit(SolicitudCompraCompleta solicitudCompraCompleta);
 
     void remove(SolicitudCompraCompleta solicitudCompraCompleta);

@@ -35,4 +35,9 @@ public class DetalleRequerimientoServiceImpl implements DetalleRequerimientoServ
     public void eliminarDetalleRequerimiento(DetalleRequerimiento detalleRequerimiento) {
         DetalleRequerimientoFacadeLocal.remove(detalleRequerimiento);
     }
+
+    @Override
+    public List<DetalleRequerimiento> listarDetalleRequerimientoPorSolicitudId(int solicitudId) {
+        return DetalleRequerimientoFacadeLocal.findbySolicitudId(solicitudId);
+    }
 }
