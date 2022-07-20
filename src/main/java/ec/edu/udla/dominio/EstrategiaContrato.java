@@ -76,7 +76,7 @@ public class EstrategiaContrato implements Serializable {
     @Size(min = 1, max = 17)
     @Column(name = "tipoContrato")
     private String tipoContrato;
-    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa")
+    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa",insertable=false,updatable=false)
     @ManyToOne(optional = false)
     private SolicitudCompraCompleta idsolicitudCompraCompleta;
     

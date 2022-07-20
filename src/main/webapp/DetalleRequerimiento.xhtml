@@ -49,10 +49,10 @@
                 <f:facet name="header">  
                     Detalle de requerimientos 
                 </f:facet>
-                <p:column headerText="Numero Solicitud" styleClass="shortColumn">
+                <p:column headerText="ID Solicitud" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.solicitudCompraCompleta.numero}" />
+                            <h:outputText value="#{detalle.idSolicitudCompraCompleta}" />
                         </f:facet>
                         <f:facet name="input">
                             <p:selectOneMenu id="solicitudes" value="#{detalle.idSolicitudCompraCompleta}"

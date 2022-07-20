@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-C:\GDC\src\main\java\ec\edu\udla\dominio\DetalleRequerimiento.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\EstrategiaContratoServiceImpl.java
-C:\GDC\src\main\java\ec\edu\udla\eis\ProveedorFacadeLocal.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\EstrategiaContratoService.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\ProductoServiceImpl.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\SolicitudCompraCompletaServiceImpl.java
-C:\GDC\src\main\java\ec\edu\udla\beans\SolicitudCompraCompletaBean.java
-C:\GDC\src\main\java\ec\edu\udla\eis\EstrategiaContratoFacadeLocal.java
-C:\GDC\src\main\java\ec\edu\udla\beans\ProductoBean.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\DetalleRequerimientoService.java
-C:\GDC\src\main\java\ec\edu\udla\dominio\TipoContrato.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\ProductoService.java
-C:\GDC\src\main\java\ec\edu\udla\beans\DetalleRequerimientoBean.java
-C:\GDC\src\main\java\ec\edu\udla\eis\EstrategiaContratoFacade.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\DetalleRequerimientoServiceImpl.java
-C:\GDC\src\main\java\ec\edu\udla\beans\ConfigurationBean.java
-C:\GDC\src\main\java\ec\edu\udla\eis\ProductoFacade.java
-C:\GDC\src\main\java\ec\edu\udla\beans\EstrategiaContratoBean.java
-C:\GDC\src\main\java\ec\edu\udla\eis\ProveedorFacade.java
-C:\GDC\src\main\java\ec\edu\udla\eis\ProductoFacadeLocal.java
-C:\GDC\src\main\java\ec\edu\udla\eis\DetalleRequerimientoFacade.java
-C:\GDC\src\main\java\ec\edu\udla\dominio\Proveedor.java
-C:\GDC\src\main\java\ec\edu\udla\eis\DetalleRequerimientoFacadeLocal.java
-C:\GDC\src\main\java\ec\edu\udla\beans\SccBean.java
-C:\GDC\src\main\java\ec\edu\udla\dominio\EstrategiaContrato.java
-C:\GDC\src\main\java\ec\edu\udla\dominio\Producto.java
-C:\GDC\src\main\java\ec\edu\udla\eis\AbstractFacade.java
-C:\GDC\src\main\java\ec\edu\udla\eis\SolicitudCompraCompletaFacadeLocal.java
-C:\GDC\src\main\java\ec\edu\udla\servicio\SolicitudCompraCompletaService.java
-C:\GDC\src\main\java\ec\edu\udla\eis\SolicitudCompraCompletaFacade.java
-C:\GDC\src\main\java\ec\edu\udla\dominio\SolicitudCompraCompleta.java
-=======
 P:\GDC\GDC\src\main\java\ec\edu\udla\eis\ProductoFacade.java
 P:\GDC\GDC\src\main\java\ec\edu\udla\servicio\ProductoServiceImpl.java
 P:\GDC\GDC\src\main\java\ec\edu\udla\beans\SolicitudCompraCompletaBean.java
@@ -61,4 +28,3 @@ P:\GDC\GDC\src\main\java\ec\edu\udla\eis\SolicitudCompraCompletaFacadeLocal.java
 P:\GDC\GDC\src\main\java\ec\edu\udla\servicio\SolicitudCompraCompletaService.java
 P:\GDC\GDC\src\main\java\ec\edu\udla\eis\ProveedorFacade.java
 P:\GDC\GDC\src\main\java\ec\edu\udla\servicio\SolicitudCompraCompletaServiceImpl.java
->>>>>>> b1cdd25c91fa95466c6ceb80520f5ccbace6c0e7
