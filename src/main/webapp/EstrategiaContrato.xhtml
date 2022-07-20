@@ -9,6 +9,19 @@
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
+    <style type="text/css">
+        .volverBoton{
+            background-color: buttonface;
+            color: #0070a3;
+            border-width: thin ;
+            border-color: #aed0ea;
+            border-radius: 7px;
+            font-size: 20em;
+            font-weight: bold;
+            height: 33px;
+        }
+
+    </style>
     <h:body>
         <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
             <f:facet name="start">
@@ -118,16 +131,31 @@
                 <p:column headerText="Solicitud de Compra">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{estrategia.idsolicitudCompraCompleta.idsolicitudCompraCompleta}" />
+                            <h:outputText value="#{estrategia.idsolicitudcompracompleta}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{estrategia.idsolicitudCompraCompleta.idsolicitudCompraCompleta}" />
+                            <p:selectOneMenu id="option2" value="#{estrategia.idsolicitudcompracompleta}"
+                                panelStyle="width:180px"  var="sol"
+                                filter="true" filterMatchMode="startsWith">
+                            <f:selectItems value="#{solicitudCompraCompletaBean.solicitudCompraCompleta}" var="solicitudCC"
+                                           itemLabel="#{solicitudCC.idsolicitudCompraCompleta}" itemValue="#{solicitudCC.idsolicitudCompraCompleta}"/>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Solicitud"/>
+                                    </f:facet>
+                                    <h:outputText value="#{sol}"/>
+                                </p:column>
+                                <f:facet name="footer">
+                                    <h:outputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.size()}"
+                                                style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                                </f:facet>
+                        </p:selectOneMenu>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
                 
                 <f:facet name="footer">
-                    <p:commandButton value="Regresar" action="index" />
+                    <h:commandButton value="Volver" action="index" styleClass="volverBoton"/>
                     <p:spacer height="5px;"/>
                     <p:commandButton value="Agregar" actionListener="#{estrategia.fechaRequerida}" oncomplete="PF('estrategiaContratoDialogo').show();"
                                      update="estrategiaContrato">
@@ -135,7 +163,7 @@
                     </p:commandButton>
                 </f:facet>
 
-                <p:column headerText="Opciones" style="width:50px">
+                <p:column headerText="Opciones" style="">
                     <p:rowEditor />
                 </p:column>
 
@@ -178,7 +206,7 @@
                         <h:inputText value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.justificacion}" />
                         
                         <h:outputText value="Solicitud de Compra" />                 
-                        <p:selectOneMenu id="option2" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.idsolicitudCompraCompleta}"
+                        <p:selectOneMenu id="option2" value="#{estrategiaContratoBean.estrategiaContratoSeleccionada.idsolicitudcompracompleta}"
                                 panelStyle="width:180px"  var="sol"
                                 filter="true" filterMatchMode="startsWith">
                             <f:selectItems value="#{solicitudCompraCompletaBean.solicitudCompraCompleta}" var="solicitudCC"
@@ -187,7 +215,7 @@
                                     <f:facet name="header">
                                         <h:outputText value="Solicitud"/>
                                     </f:facet>
-                                    <h:outputText value="#{sol.idsolicitudCompraCompleta.idsolicitudCompraCompleta}"/>
+                                    <h:outputText value="#{sol}"/>
                                 </p:column>
                                 <f:facet name="footer">
                                     <h:outputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.size()}"

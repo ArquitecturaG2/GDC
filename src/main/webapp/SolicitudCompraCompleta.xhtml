@@ -14,6 +14,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <h:head>
         <title>Solicitud de Compra Completa</title>
     </h:head>
+    <style type="text/css">
+        .volverBoton{
+            background-color: buttonface;
+            color: #0070a3;
+            border-width: thin ;
+            border-color: #aed0ea;
+            border-radius: 7px;
+            font-size: 20em;
+            font-weight: bold;
+            height: 33px;
+        }
+
+    </style>
     <h:body>
         
          <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
@@ -124,14 +137,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                     </p:cellEditor>
                 </p:column>
                 <f:facet name="footer">
-                    <p:commandButton value="Regresar" action="index" />
+                    <h:commandButton value="Volver" action="index" styleClass="volverBoton"/>
                     <p:spacer height="5px;"/>
                     <p:commandButton value="Agregar" actionListener="#{solicitudCompraCompletaBean.reiniciarSolicitudCompraCompletaSeleccionada}" oncomplete="PF('solicitudCompraCompletaDialogo').show();" update="solicitudCompraCompletas">
                         <p:ajax event="dialogReturn" update="solicitudCompraCompletas"/>
                     </p:commandButton>
                 </f:facet>
 
-                <p:column headerText="Opciones" style="width:50px">
+                <p:column headerText="Opciones" style="">
                     <p:rowEditor />
                 </p:column>
 

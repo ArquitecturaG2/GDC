@@ -76,9 +76,13 @@ public class EstrategiaContrato implements Serializable {
     @Size(min = 1, max = 17)
     @Column(name = "tipoContrato")
     private String tipoContrato;
-    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa")
+    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa",insertable=false,updatable=false)
     @OneToOne(optional = false)
     private SolicitudCompraCompleta idsolicitudCompraCompleta;
+    
+    @Basic(optional = false)
+    @Column(name = "idsolicitud_compra_completa")
+    private Integer idsolicitudcompracompleta;
 
     public EstrategiaContrato() {
     }
@@ -157,7 +161,22 @@ public class EstrategiaContrato implements Serializable {
     }
 
     public void setTipoContrato(String tipoContrato) {
-        this.tipoContrato = tipoContrato;
+        String con = TipoContrato.AcuerdoGeneral.toString();
+        String con1 = TipoContrato.OrdenDeCompra.toString();
+        String tp = null;
+        if(tipoContrato.equals(con))
+        {
+            tp = "Orden de Compra";
+            this.tipoContrato = tp;
+        }else if(tipoContrato.equals(con1))
+        {
+            tp = "Acuerdo General";
+            this.tipoContrato = tp;
+        }else 
+        {
+            tp = "Orden de Servicio";
+            this.tipoContrato = tp;
+        }
     }
 
     public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {
@@ -167,6 +186,16 @@ public class EstrategiaContrato implements Serializable {
     public void setIdsolicitudCompraCompleta(SolicitudCompraCompleta idsolicitudCompraCompleta) {
         this.idsolicitudCompraCompleta = idsolicitudCompraCompleta;
     }
+
+    public Integer getIdsolicitudcompracompleta() {
+        return idsolicitudcompracompleta;
+    }
+
+    public void setIdsolicitudcompracompleta(Integer idsolicitudcompracompleta) {
+        this.idsolicitudcompracompleta = idsolicitudcompracompleta;
+    }
+    
+    
 
     @Override
     public int hashCode() {
