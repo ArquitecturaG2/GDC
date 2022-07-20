@@ -18,6 +18,9 @@ public class SolicitudCompraCompletaBean {
     private SolicitudCompraCompleta solicitudCompraCompletaSeleccionada;
 
     List<SolicitudCompraCompleta> solicitudCompraCompleta;
+    
+    private boolean propuestaCompetitiva;
+    private boolean adjudicacionDirecta;
 
     public SolicitudCompraCompletaBean() {
     }
@@ -55,6 +58,21 @@ public class SolicitudCompraCompletaBean {
     }
 
     public void agregarSolicitudCompraCompleta() {
+        Short n1 = null;
+        Short n2 = null;
+        if(propuestaCompetitiva){
+            n1 = 1;
+        }else{
+            n1 = 0;
+        }
+        if(adjudicacionDirecta){
+            n2 = 1;
+        }else{
+            n2 = 0;
+        }
+        this.solicitudCompraCompletaSeleccionada.setPropuestaCompetitiva(n1);
+        this.solicitudCompraCompletaSeleccionada.setAdjudicacionDirecta(n2);
+        
         solicitudCompraCompletaService.registrarSolicitudCompraCompleta(this.solicitudCompraCompletaSeleccionada);
         this.solicitudCompraCompletaSeleccionada = null;
         //actualizamos la lista
@@ -75,4 +93,22 @@ public class SolicitudCompraCompletaBean {
     public void setSolicitudCompraCompletaService(SolicitudCompraCompletaService solicitudCompraCompletaService) {
         this.solicitudCompraCompletaService = solicitudCompraCompletaService;
     }
+
+    public boolean isPropuestaCompetitiva() {
+        return propuestaCompetitiva;
+    }
+
+    public void setPropuestaCompetitiva(boolean propuestaCompetitiva) {
+        this.propuestaCompetitiva = propuestaCompetitiva;
+    }
+
+    public boolean isAdjudicacionDirecta() {
+        return adjudicacionDirecta;
+    }
+
+    public void setAdjudicacionDirecta(boolean adjudicacionDirecta) {
+        this.adjudicacionDirecta = adjudicacionDirecta;
+    }
+    
+    
 }

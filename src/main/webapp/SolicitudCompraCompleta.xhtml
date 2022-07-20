@@ -169,10 +169,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.funcionDelegado}" />
 
                         <h:outputText value="PropuestaCompetitiva: " />
-                        <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.propuestaCompetitiva}" />
+                        <p:selectBooleanCheckbox value="#{solicitudCompraCompletaBean.propuestaCompetitiva}" />
 
                         <h:outputText value="AdjudicacionDirecta" />
-                        <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.adjudicacionDirecta}" />
+                        <p:selectBooleanCheckbox value="#{solicitudCompraCompletaBean.adjudicacionDirecta}" />
                         
                         <h:outputText value="Proveedor" />
                         <h:inputText value="#{solicitudCompraCompletaBean.solicitudCompraCompletaSeleccionada.id_proveedor}" />
