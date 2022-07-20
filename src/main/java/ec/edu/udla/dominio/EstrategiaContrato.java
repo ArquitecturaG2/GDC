@@ -13,9 +13,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author diana
+ * @author Emgot
  */
 @Entity
 @Table(name = "estrategia_contrato")
@@ -76,13 +76,9 @@ public class EstrategiaContrato implements Serializable {
     @Size(min = 1, max = 17)
     @Column(name = "tipoContrato")
     private String tipoContrato;
-    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa",insertable=false,updatable=false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa")
+    @OneToOne(optional = false)
     private SolicitudCompraCompleta idsolicitudCompraCompleta;
-    
-    @Basic(optional = false)
-    @Column(name = "idsolicitud_compra_completa")
-    private Integer idsolicitud;
 
     public EstrategiaContrato() {
     }
@@ -97,7 +93,7 @@ public class EstrategiaContrato implements Serializable {
         this.duracion = duracion;
         this.lugarEntrega = lugarEntrega;
         this.cantidadContrato = cantidadContrato;
-        setTipoContrato(tipoContrato);
+        this.tipoContrato = tipoContrato;
     }
 
     public Integer getIdestrategiaContrato() {
@@ -137,7 +133,6 @@ public class EstrategiaContrato implements Serializable {
     }
 
     public void setExtension(Short extension) {
-        
         this.extension = extension;
     }
 
@@ -162,30 +157,7 @@ public class EstrategiaContrato implements Serializable {
     }
 
     public void setTipoContrato(String tipoContrato) {
-        String con = TipoContrato.AcuerdoGeneral.toString();
-        String con1 = TipoContrato.OrdenDeCompra.toString();
-        String tp = null;
-        if(tipoContrato.equals(con))
-        {
-            tp = "Orden de Compra";
-            this.tipoContrato = tp;
-        }else if(tipoContrato.equals(con1))
-        {
-            tp = "Acuerdo General";
-            this.tipoContrato = tp;
-        }else 
-        {
-            tp = "Orden de Servicio";
-            this.tipoContrato = tp;
-        }
-    }
-    
-    public Integer getidsolicitudcompracompleta() {
-        return idsolicitud;
-    }
-
-    public void setidsolicitudcompracompleta(Integer idsolicitudcompracompleta) {
-        this.idsolicitud = idsolicitudcompracompleta;
+        this.tipoContrato = tipoContrato;
     }
 
     public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {
@@ -222,4 +194,3 @@ public class EstrategiaContrato implements Serializable {
     }
     
 }
-

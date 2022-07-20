@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -44,19 +45,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "SolicitudCompraCompleta.findByAdjudicacionDirecta", query = "SELECT s FROM SolicitudCompraCompleta s WHERE s.adjudicacionDirecta = :adjudicacionDirecta")})
 public class SolicitudCompraCompleta implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idsolicitud_compra_completa")
-    private Integer idsolicitudCompraCompleta;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 7)
     @Column(name = "numero")
     private String numero;
     @Basic(optional = false)
-    @NotNull
+    @NotNull()
     @Size(min = 1, max = 45)
     @Column(name = "unidad")
     private String unidad;
@@ -88,6 +83,14 @@ public class SolicitudCompraCompleta implements Serializable {
     @NotNull
     @Column(name = "adjudicacionDirecta")
     private short adjudicacionDirecta;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
+    private EstrategiaContrato estrategiaContrato;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idsolicitud_compra_completa")
+    private Integer idsolicitudCompraCompleta;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
     private Collection<EstrategiaContrato> estrategiaContratoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitudCompraCompleta")
@@ -126,6 +129,66 @@ public class SolicitudCompraCompleta implements Serializable {
 
     public void setIdsolicitudCompraCompleta(Integer idsolicitudCompraCompleta) {
         this.idsolicitudCompraCompleta = idsolicitudCompraCompleta;
+    }
+
+
+    @XmlTransient
+    public Collection<EstrategiaContrato> getEstrategiaContratoCollection() {
+        return estrategiaContratoCollection;
+    }
+
+    public void setEstrategiaContratoCollection(Collection<EstrategiaContrato> estrategiaContratoCollection) {
+        this.estrategiaContratoCollection = estrategiaContratoCollection;
+    }
+
+    @XmlTransient
+    public Collection<DetalleRequerimiento> getDetalleRequerimientoCollection() {
+        return detalleRequerimientoCollection;
+    }
+
+    public void setDetalleRequerimientoCollection(Collection<DetalleRequerimiento> detalleRequerimientoCollection) {
+        this.detalleRequerimientoCollection = detalleRequerimientoCollection;
+    }
+
+    public Proveedor getIdproveedor() {
+        return idproveedor;
+    }
+
+    public void setIdproveedor(Proveedor idproveedor) {
+        this.idproveedor = idproveedor;
+    }
+
+    public Integer getId_proveedor() {
+        return id_proveedor;
+    }
+
+    public void setId_proveedor(Integer id_proveedor) {
+        this.id_proveedor = id_proveedor;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (idsolicitudCompraCompleta != null ? idsolicitudCompraCompleta.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof SolicitudCompraCompleta)) {
+            return false;
+        }
+        SolicitudCompraCompleta other = (SolicitudCompraCompleta) object;
+        if ((this.idsolicitudCompraCompleta == null && other.idsolicitudCompraCompleta != null) || (this.idsolicitudCompraCompleta != null && !this.idsolicitudCompraCompleta.equals(other.idsolicitudCompraCompleta))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ec.edu.udla.dominio.SolicitudCompraCompleta[ idsolicitudCompraCompleta=" + idsolicitudCompraCompleta + " ]";
     }
 
     public String getNumero() {
@@ -192,63 +255,12 @@ public class SolicitudCompraCompleta implements Serializable {
         this.adjudicacionDirecta = adjudicacionDirecta;
     }
 
-    @XmlTransient
-    public Collection<EstrategiaContrato> getEstrategiaContratoCollection() {
-        return estrategiaContratoCollection;
+    public EstrategiaContrato getEstrategiaContrato() {
+        return estrategiaContrato;
     }
 
-    public void setEstrategiaContratoCollection(Collection<EstrategiaContrato> estrategiaContratoCollection) {
-        this.estrategiaContratoCollection = estrategiaContratoCollection;
-    }
-
-    @XmlTransient
-    public Collection<DetalleRequerimiento> getDetalleRequerimientoCollection() {
-        return detalleRequerimientoCollection;
-    }
-
-    public void setDetalleRequerimientoCollection(Collection<DetalleRequerimiento> detalleRequerimientoCollection) {
-        this.detalleRequerimientoCollection = detalleRequerimientoCollection;
-    }
-
-    public Proveedor getIdproveedor() {
-        return idproveedor;
-    }
-
-    public void setIdproveedor(Proveedor idproveedor) {
-        this.idproveedor = idproveedor;
-    }
-
-    public Integer getId_proveedor() {
-        return id_proveedor;
-    }
-
-    public void setId_proveedor(Integer id_proveedor) {
-        this.id_proveedor = id_proveedor;
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idsolicitudCompraCompleta != null ? idsolicitudCompraCompleta.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof SolicitudCompraCompleta)) {
-            return false;
-        }
-        SolicitudCompraCompleta other = (SolicitudCompraCompleta) object;
-        if ((this.idsolicitudCompraCompleta == null && other.idsolicitudCompraCompleta != null) || (this.idsolicitudCompraCompleta != null && !this.idsolicitudCompraCompleta.equals(other.idsolicitudCompraCompleta))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "ec.edu.udla.dominio.SolicitudCompraCompleta[ idsolicitudCompraCompleta=" + idsolicitudCompraCompleta + " ]";
+    public void setEstrategiaContrato(EstrategiaContrato estrategiaContrato) {
+        this.estrategiaContrato = estrategiaContrato;
     }
     
 }
