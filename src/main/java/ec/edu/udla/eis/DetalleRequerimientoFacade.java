@@ -34,7 +34,7 @@ public class DetalleRequerimientoFacade extends AbstractFacade<DetalleRequerimie
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(DetalleRequerimiento.class));
         List<DetalleRequerimiento> all = getEntityManager().createQuery(cq).getResultList();
-        return all.stream().filter(n->n.getIdsolicitudCompraCompleta().getIdsolicitudCompraCompleta()==idSolicitud).collect(Collectors.toList());
+        return all.stream().filter(n->n.getSolicitudCompraCompleta().getIdsolicitudCompraCompleta()==idSolicitud).collect(Collectors.toList());
     }
     
 }

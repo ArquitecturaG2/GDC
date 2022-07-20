@@ -14,8 +14,11 @@
             width: 120px;
             align-items: center;
             align-content: center;
-            text-align: center;
-            
+            text-align: center; 
+        }
+        
+        .dateColumn{
+            width: 150px;
         }
     </style>
     <h:body>
@@ -46,13 +49,41 @@
                 <f:facet name="header">  
                     Detalle de requerimientos 
                 </f:facet>
+                <p:column headerText="Numero Solicitud" styleClass="shortColumn">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{detalle.solicitudCompraCompleta.numero}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:selectOneMenu id="solicitudes" value="#{detalle.idSolicitudCompraCompleta}"
+                                panelStyle="width:180px"  var="p"
+                                filter="true" filterMatchMode="startsWith">
+                                <f:selectItems value="#{solicitudCompraCompletaBean.solicitudCompraCompleta}" var="solicitud"
+                                               itemLabel="#{solicitud.numero}" itemValue="#{solicitud.idsolicitudCompraCompleta}"/>
+                                    <f:facet name="footer">
+                                        <h:outputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.size()} Solicitudes"
+                                                    style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                                    </f:facet>
+                            </p:selectOneMenu>  
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
                 <p:column headerText="Producto" styleClass="shortColumn">
                     <p:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{detalle.producto.idproducto}" />
+                            <h:outputText value="#{detalle.idProducto}" />
                         </f:facet>
                         <f:facet name="input">
-                            <p:inputText value="#{detalle.producto.idproducto}" />
+                            <p:selectOneMenu id="advanced" value="#{detalle.idProducto}"
+                                panelStyle="width:180px"  var="p"
+                                filter="true" filterMatchMode="startsWith">
+                                <f:selectItems value="#{productoBean.productos}" var="producto"
+                                               itemLabel="#{producto.idproducto}" itemValue="#{producto.idproducto}"/>
+                                <f:facet name="footer">
+                                    <h:outputText value="#{productoBean.productos.size()} productos"
+                                                style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                                </f:facet>
+                            </p:selectOneMenu>
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
@@ -98,7 +129,7 @@
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
-                <p:column headerText="fechaRequerida">
+                <p:column headerText="Fecha Requerida" styleClass="dateColumn">
                     <p:cellEditor>
                         <f:facet name="output">
                             <p:datePicker id="fech" value="#{detalle.fechaRequerida}"
@@ -112,7 +143,7 @@
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
-                <p:column headerText="lugarRequerido">
+                <p:column headerText="Lugar Requerido">
                     <p:cellEditor>
                         <f:facet name="output">
                             <h:outputText value="#{detalle.lugarRequerido}" />
@@ -122,6 +153,9 @@
                         </f:facet>
                     </p:cellEditor>
                 </p:column>
+                <p:column headerText="Opciones" styleClass="shortColumn">
+                    <p:rowEditor />
+                </p:column>
                 <f:facet name="footer">
                     <h:commandButton value="Volver" action="index" />
                     <p:spacer height="20px;" width="20px;"/>
@@ -130,9 +164,7 @@
                     </p:commandButton>
                 </f:facet>
                 
-                <p:column headerText="Opciones" style="width:50px">
-                    <p:rowEditor />
-                </p:column>
+                
                 <p:ajax event="rowEdit" listener="#{detalleRequerimientoBean.editListener}">
                 </p:ajax>
             </p:dataTable>
@@ -146,6 +178,18 @@
             <p:dialog header="Agregar detalle" widgetVar="detalleDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="Detalle" style="text-align:center;">
                     <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Solicitud Compra" />
+                        <p:selectOneMenu id="solicitudes" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.idSolicitudCompraCompleta}"
+                                panelStyle="width:180px"  var="p"
+                                filter="true" filterMatchMode="startsWith">
+                            
+                            <f:selectItems value="#{solicitudCompraCompletaBean.solicitudCompraCompleta}" var="solicitud"
+                                           itemLabel="#{solicitud.numero}" itemValue="#{solicitud.idsolicitudCompraCompleta}"/>
+                                <f:facet name="footer">
+                                    <h:outputText value="#{solicitudCompraCompletaBean.solicitudCompraCompleta.size()} Solicitudes"
+                                                style="font-weight:bold;" styleClass="p-py-1 p-d-block"/>
+                                </f:facet>
+                        </p:selectOneMenu>
                         <h:outputText value="Producto" />
                         <p:selectOneMenu id="advanced" value="#{detalleRequerimientoBean.detalleRequerimientoSeleccionada.idProducto}"
                                 panelStyle="width:180px"  var="p"

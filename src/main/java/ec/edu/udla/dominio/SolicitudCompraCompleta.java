@@ -90,7 +90,7 @@ public class SolicitudCompraCompleta implements Serializable {
     private short adjudicacionDirecta;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
     private Collection<EstrategiaContrato> estrategiaContratoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsolicitudCompraCompleta")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "solicitudCompraCompleta")
     private Collection<DetalleRequerimiento> detalleRequerimientoCollection;
     @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor",insertable=false,updatable=false)
     @ManyToOne(optional = false)

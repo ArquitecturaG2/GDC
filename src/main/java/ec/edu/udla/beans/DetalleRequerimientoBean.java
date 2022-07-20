@@ -64,7 +64,7 @@ public class DetalleRequerimientoBean {
 
     public void agregarDetalleRequerimiento() {
         this.detalleRequerimientoSeleccionada.setProducto(new Producto(this.detalleRequerimientoSeleccionada.getIdProducto()));
-        this.detalleRequerimientoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
+        this.detalleRequerimientoSeleccionada.setSolicitudCompraCompleta(new SolicitudCompraCompleta(1));
         this.detalleRequerimientoSeleccionada.setPrecioTotal(
         this.detalleRequerimientoSeleccionada.getCantidad()*
         this.detalleRequerimientoSeleccionada.getPrecioUnitario());

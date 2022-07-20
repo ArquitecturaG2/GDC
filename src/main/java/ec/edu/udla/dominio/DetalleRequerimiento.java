@@ -80,13 +80,16 @@ public class DetalleRequerimiento implements Serializable {
     @Basic(optional = false)
     @Column(name = "idproducto")
     private int idProducto;
-    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa")
+    @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa",insertable=false,updatable=false)
     @ManyToOne(optional = false)
-    private SolicitudCompraCompleta idsolicitudCompraCompleta;
+    private SolicitudCompraCompleta solicitudCompraCompleta;
+    @Basic(optional = false)
+    @Column(name = "idsolicitud_compra_completa")
+    private int idSolicitudCompraCompleta;
 
     public DetalleRequerimiento() {
         producto = new Producto();
-        idsolicitudCompraCompleta = new SolicitudCompraCompleta();
+        solicitudCompraCompleta = new SolicitudCompraCompleta();
     }
 
     public DetalleRequerimiento(Integer iddetalleRequerimiento) {
@@ -174,15 +177,23 @@ public class DetalleRequerimiento implements Serializable {
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
+
+    public SolicitudCompraCompleta getSolicitudCompraCompleta() {
+        return solicitudCompraCompleta;
+    }
+
+    public void setSolicitudCompraCompleta(SolicitudCompraCompleta solicitudCompraCompleta) {
+        this.solicitudCompraCompleta = solicitudCompraCompleta;
+    }
+
+    public int getIdSolicitudCompraCompleta() {
+        return idSolicitudCompraCompleta;
+    }
+
+    public void setIdSolicitudCompraCompleta(int idSolicitudCompraCompleta) {
+        this.idSolicitudCompraCompleta = idSolicitudCompraCompleta;
+    }
     
-
-    public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {
-        return idsolicitudCompraCompleta;
-    }
-
-    public void setIdsolicitudCompraCompleta(SolicitudCompraCompleta idsolicitudCompraCompleta) {
-        this.idsolicitudCompraCompleta = idsolicitudCompraCompleta;
-    }
 
     @Override
     public int hashCode() {
