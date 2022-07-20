@@ -5,7 +5,6 @@
 package ec.edu.udla.dominio;
 
 import java.io.Serializable;
-import static java.lang.Short.parseShort;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -80,6 +79,10 @@ public class EstrategiaContrato implements Serializable {
     @JoinColumn(name = "idsolicitud_compra_completa", referencedColumnName = "idsolicitud_compra_completa")
     @ManyToOne(optional = false)
     private SolicitudCompraCompleta idsolicitudCompraCompleta;
+    
+    @Basic(optional = false)
+    @Column(name = "idsolicitud_compra_completa")
+    private Integer idsolicitud;
 
     public EstrategiaContrato() {
     }
@@ -175,6 +178,14 @@ public class EstrategiaContrato implements Serializable {
             tp = "Orden de Servicio";
             this.tipoContrato = tp;
         }
+    }
+    
+    public Integer getidsolicitudcompracompleta() {
+        return idsolicitud;
+    }
+
+    public void setidsolicitudcompracompleta(Integer idsolicitudcompracompleta) {
+        this.idsolicitud = idsolicitudcompracompleta;
     }
 
     public SolicitudCompraCompleta getIdsolicitudCompraCompleta() {

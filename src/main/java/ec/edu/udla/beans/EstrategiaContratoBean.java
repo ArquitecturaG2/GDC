@@ -68,7 +68,6 @@ public class EstrategiaContratoBean {
         }else{
             n = 0;
         }
-        this.estrategiaContratoSeleccionada.setIdsolicitudCompraCompleta(new SolicitudCompraCompleta(1));
         this.estrategiaContratoSeleccionada.setExtension(n);
         
         
